@@ -1,35 +1,104 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap");
+
+/** 공통 */
 * {
-  	box-sizing: border-box;
-  	font-family: "Noto Sans KR", sans-serif;
+	box-sizing: border-box;
+	font-family: "Noto Sans KR", sans-serif;
+  }
+
+  html {
+	font-size: 17px; /* 1rem - 17px */
+  }
+
+  body {
+	margin: 0;
+  }
+
+  ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+
+  dl,
+  dt,
+  dd {
+	list-style-type: none;
+	margin: 0;
+  }
+
+  a {
+	text-decoration: none;
+	color: black;
+  }
+
+  .layout_width {
+	width: 1300px;
+	margin: 0 auto;
+  }
+
+  nav a, footer a, footer dt, footer dd, .copyright {
+	color: white;
+  }
+
+/** 메인 페이지 상단 */
+
+.main_top {
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
 }
 
-html {
-  	font-size: 18px;
+.main_top a:first-child {
+	margin-right: 0.5rem;
 }
 
-body {
-  	margin: 0 20px;
-  	color: #333;
+nav {
+	background-color: black;
 }
 
-dl,
-dt,
-dd {
-  	list-style-type: none;
-  	margin: 0;
+nav .nav_list .box {
+	text-align: center;
+	width:calc(100%/8);
 }
 
-ul {
-  	list-style: none;
-  	padding: 0;
-  	margin: 0;
+nav .show-bar li {
+	margin-top: 5px;
 }
 
-a {
-  	text-decoration: none;
-  	color: #333;
+nav .show-bar a:hover {
+	border-bottom: 1px solid #E0AC47;
+	color: #E0AC47;
 }
+
+.border_bottom {
+	height: 1px;
+	background-color: rgb(39, 39, 39);
+}
+
+.border_bottom_each {
+	height: 3px;
+	background-color: #E0AC47;
+}
+
+nav .nav_over {
+	display: block;
+	height: 90px;
+	line-height: 90px;
+}
+
+nav .nav_list {
+	display: flex;
+	flex-direction: row;
+}
+nav .show-bar {
+	display: flex;
+	flex-direction: column;
+	height: 230px;
+	padding-top: 30px;
+}
+
 
 /*list*/
 
@@ -50,20 +119,6 @@ h1 {
 
 .post_list {
 	margin-top: 150px;
-}
-
-a[href='write'] {
-	position: absolute;
-   	right: 100px;
-   	line-height: 100px;
-   	font-size:25px;
-}
-
-.write-top {
-	width: 100vw;
-	height: 70px;
-	position: fixed;
- 	top:0;
 }
 
 #button {
@@ -145,3 +200,75 @@ input[type="reset"] {
 }
 
 
+/** 사이트 하단 사이트맵&회사정보 */
+
+footer {
+	background-color: black;
+	height: 400px;
+	font-size: 0.9rem;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	position:relative;
+}
+
+footer .site_map {
+	margin-left: 20%;
+}
+
+footer::before {
+	background-image: url("../img/footer_top.png");
+	content: "";
+	position: absolute;
+	top:-55px;
+	height: 55px;
+	left: 0;
+	right: 0;
+}
+
+footer .site_map_list {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+}
+
+footer .site_map_list li {
+	margin-right: 20px;
+}
+
+footer .site_map_list li:before,
+footer .company_info .border:before {
+	content: "|";
+	color: white;
+	margin-right: 0.9rem;
+}
+footer .company_info .border {
+	padding-left: 15px;
+}
+
+footer .site_map_list li:first-child:before {
+	display: none;
+}
+
+footer .site_map_list li a{
+	text-align: center;
+}
+
+footer .site_map .company_info {
+	margin-top: 30px;
+}
+
+footer .site_map .company_info dt,
+footer .site_map .company_info dd {
+  display: table-cell;
+}
+
+footer .site_map .company_info dl {
+	line-height: 0.8rem;
+	display: inline;
+}
+
+footer .copyright {
+	margin-top: 40px;
+}
