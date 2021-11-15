@@ -8,7 +8,10 @@
 <c:set var="list" value="<%=list%>" />
 <c:forEach var="blog" items="${list}">
 	<tr class="tr_list" onClick="location.href='view?idx=${blog.idx}'">
-		<td>${blog.subject}</td><td>${blog.regDt}</td>
+		<td>${blog.idx}</td>
+		<td>${blog.subject}</td>
+		<td>${blog.writer}</td>
+		<td>${blog.regDt}</td>
 	</tr>
 	<!-- 
 	<tr>
