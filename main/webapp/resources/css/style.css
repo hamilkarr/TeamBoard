@@ -92,31 +92,53 @@ tr {
 
 /*write*/
 
+.writebox {
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.category_box {
+    margin-top: 32px;
+}
+
+.category_box .select_btn {
+    display: block;
+    padding: 9px 15px 9px 15px;
+    font-size: 16px;
+    border: 1px solid #dfdfdf;
+}
+
 input[type="submit"],
 input[type="reset"] {
- 	border: none;
   	color: black;
-  	padding:5px;
+  	padding:5px 10px;
   	text-decoration: none;
   	cursor: pointer;
    	line-height: 30px;
-   	font-size:20px;
+   	font-size:16px;
     text-decoration: none;
-   	margin:10px;
+   	margin:30px 8px 0;
 	float: right;
+	border: 1px solid #dfdfdf;
 }
 
 .addImage {
-	cursor: pointer;
+	margin-top: 8px;
+    cursor: pointer;
+    border: 1px solid #dfdfdf;
+    font-size: 16px;
+    padding: 5px 8px;
+    float: left;
 }
 
 .box input {
 	display: block;
-	border : none;
-	font-size:35px;
-	border-bottom: 1px solid gray;
-	padding: 20px 30px; 
-	margin: 20px 0;
+	font-size:15px;
+	border: 1px solid  #dfdfdf;
+	padding: 12px 12px; 
+	width: 1200px;
+	margin: 10px 0;
 }
 
 /*view*/
@@ -143,5 +165,3 @@ input[type="reset"] {
    	background-color: #EFEFEF;
    	padding: 10px 30px;
 }
-
-
