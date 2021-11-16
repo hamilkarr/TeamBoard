@@ -52,14 +52,14 @@ h3 {
 
 /* 게시판 구분 tit */
 
-ul{
+.tit_list{
 	overflow: hidden;
 	height: 50px;
 	padding-top: 20px;
 	padding-left: 0px;
 }
 
-li {
+.tit_list li {
 	float: left;
     color: #e89407;
     text-decoration: none;
@@ -84,7 +84,7 @@ li {
 	margin-bottom: 20px;
 }
 
-th {
+.table_tit th {
 	padding: 25px 0;
 	font-size:20px;
 	color: #ffffff;
@@ -92,21 +92,22 @@ th {
 	letter-spacing: 2px;
 }
 
-td {
+.tr_list td {
 	padding: 20px 0;
 	border-bottom: 1px solid #d8d8d8;
 }
 
-#board_bottom {
+.board_bottom {
 	padding-top: 50px;
 	text-align: center;
 }
 
-#page {
+.page {
 	background-color: #252525;
+	color: #ffffff;
 }
 
-button {
+.write_btn {
 	float : right;
 	top: 20px;
 	line-height: 40px;
@@ -116,7 +117,7 @@ button {
 	border: 0;
 }
 
-a {
+.write {
 	color: #ffffff;
 	font-size: 15px;
 }
