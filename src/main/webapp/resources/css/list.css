@@ -60,11 +60,14 @@ h3 {
 }
 
 .tit_list li {
-	float: left;
-    color: #e89407;
+	float: left;  
     text-decoration: none;
     padding-left: 38px;
     padding-right: 2px;
+}
+
+.tit_list li a {
+	color: #e89407;
 }
 
 .tit_link::before {

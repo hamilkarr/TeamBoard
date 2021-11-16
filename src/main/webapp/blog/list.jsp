@@ -93,9 +93,9 @@
 	<h3>게시판 목록</h3>
 	<div class="bord_tit">
 		<ul class="tit_list">
-			<li>전체</li>
-			<li class="tit_link">일반</li>
-			<li class="tit_link">팁과 정보</li>
+			<li><a href="#">전체</a></li>
+			<li class="tit_link"><a href="#">일반</a></li>
+			<li class="tit_link"><a href="#">팁과 정보</a></li>
 		</ul>
 	</div>
 	<table class="board_table">
