@@ -18,8 +18,14 @@
 			<input type="password" name="memPw" placeholder="비밀번호">
 			
 			<input type="submit" value="로그인">
-			<div class='join_link'>
-				<a href="${siteURL}/member/join">회원가입</a>
+			<div class='findjoin_link'>
+				<div class='left'>
+					<a href="${siteURL}/member/findid">아이디 찾기</a>
+					<a href="${siteURL}/member/findpw">비밀번호 찾기</a>
+				</div>
+				<div class='right'>
+					<a href="${siteURL}/member/join">회원 가입</a>
+				</div>
 			</div>
 			<div class="snsline">
 				SNS 로그인

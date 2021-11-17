@@ -4,8 +4,13 @@
   	font-family: "Noto Sans KR", sans-serif;
 }
 
+html {
+	font-size: 13px; color: black;
+}
+
 a{
 	text-decoration: none;
+	color:black;
 }
 
 /** member/login.jsp 로그인 */
@@ -53,20 +58,30 @@ a{
 	margin-top: 25px;
 }
 
-.loginbox .join_link {
-	width:100%;
-	text-align: right;
-	padding: 12px 0 10px;
-
+.loginbox .findjoin_link {
+	padding: 18px 0 8px;	
 }
 
-.loginbox .join_link a {
-	font-size: 14px;
-	color: black;
+.loginbox .findjoin_link:after {
+	content: '';
+	display: block;
+	clear: both;
 }
 
-.loginbox .join_link a:hover {
+.loginbox .findjoin_link .left {
+	float: left; 
+} 
+
+.loginbox .findjoin_link .right {
+	float: right;
+}
+
+.loginbox .findjoin_link a:hover {
 	text-decoration: underline;
+}
+
+.loginbox .findjoin_link .left a { 
+	margin-right: 10px; 
 }
 
 .loginbox .snsline {
