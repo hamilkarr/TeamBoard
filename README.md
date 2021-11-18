@@ -9,3 +9,4 @@ http://localhost:8080/TeamBoard/
 
 - 회원가입
 - 네이버 로그인 
+- 카카오 로그인
