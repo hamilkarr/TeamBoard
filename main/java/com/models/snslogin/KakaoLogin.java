@@ -48,9 +48,8 @@ public class KakaoLogin extends SocialLogin {
 		sb.append("https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=");
 		sb.append(clientId);
 		sb.append("&redirect_uri=");
-		sb.append(redirectURI);
+		sb.append(redirectURI);		
 		
-		System.out.println("codeURL: " + sb.toString());
 		return sb.toString();
 	}
 
@@ -79,7 +78,7 @@ public class KakaoLogin extends SocialLogin {
 			}
 		}
 		
-		System.out.println("accessToken: " + accessToken.toString());
+		System.out.println("##AccessToken: " + accessToken.toString());
 		return accessToken;
 		
 	}
@@ -97,20 +96,129 @@ public class KakaoLogin extends SocialLogin {
 
 	@Override
 	public Member getProfile(String accessToken) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = null;
+		
+		String apiURL = "https://kapi.kakao.com/v2/user/me";
+		HashMap<String, String> headers = new HashMap<>();
+		headers.put("Authorization", "Bearer " + accessToken);
+		JSONObject json = httpRequest(apiURL, headers);
+		
+		System.out.println("#### json : " + json);
+		
+		/*
+		if (json == null || json.get("profile") == null) {
+			return null;
+		}
+		*/
+		
+		String memId = null;
+		JSONObject res = (JSONObject)json.get("kakao_account");
+		
+		System.out.println("res : " + res);
+		
+		JSONObject profile = (JSONObject)res.get("profile");
+		
+		
+		String email = (String)res.get("email");
+		if (email != null) {
+			memId = email.substring(0, email.lastIndexOf("@"));
+		}
+		/*
+		JSONObject res = (JSONObject)json.get("response");
+		String memId = null;
+		String email = (String)res.get("email");
+		if (email != null) {
+			memId = email.substring(0, email.lastIndexOf("@"));
+		}
+		*/
+		// (String)json.get("id"),
+		member = new Member(
+				0, 
+				memId,
+				null,
+				null,
+				(String)profile.get("nickname"),
+				null,
+				null,
+				"kakao",
+				String.valueOf(json.get("id")),
+				null
+		);
+		
+		/**
+		 * 카카오 회원프로필 조회 API로 얻어온 회원 정보는 
+		 * 페이지가 이동하더라도 데이터 유지 할 필요
+		 * (회원가입, 회원 가입처리 ....)
+		 * 세션을 통해서 데이터 유지
+		 */
+		HttpSession session = Req.get().getSession();
+		session.setAttribute("kakao_member", member);
+		
+		System.out.println("##### Kakao member : " + member.toString());
+		
+		return member;
 	}
 
 	@Override
 	public boolean isJoin() {
-		// TODO Auto-generated method stub
+		HttpServletRequest request = Req.get();
+		HttpSession session = request.getSession();
+		if (session.getAttribute("kakao_member") == null) {
+			return false;
+		}
+		
+		Member kakaoMember = (Member)session.getAttribute("kakao_member");
+		if (kakaoMember == null)
+			return false;
+		
+		
+		String sql = "SELECT * FROM member WHERE socialType='kakao' AND socialId = ?";
+		ArrayList<DBField> bindings = new ArrayList<>();
+		bindings.add(DB.setBinding("String", kakaoMember.getSocialId()));
+		
+		Member member = DB.executeQueryOne(sql, bindings, new Member());
+		if (member != null) 
+			return true;
+		
 		return false;
 	}
 
 	@Override
 	public boolean login() {
-		// TODO Auto-generated method stub
+		Member member = getMember();
+		if (member != null) {
+			Req.get().getSession().setAttribute("memNo", member.getMemNo());
+			
+			return true;
+		}
+		
+		// 프로필 정보 세션 비우기
+		SocialLogin.clear();
+		
 		return false;
+	}
+	
+	/**
+	 * 카카오 로그인 회원정보 DB
+	 *  
+	 * @param request
+	 * @return
+	 */
+	public Member getMember() {
+		HttpServletRequest request = Req.get();
+		Member member = null;
+		HttpSession session = request.getSession();
+		if (session.getAttribute("kakao_member") != null) {
+			Member kakaoMember = (Member)session.getAttribute("kakao_member");
+			String socialId = kakaoMember.getSocialId();
+			
+			String sql = "SELECT * FROM member WHERE socialType='kakao' AND socialId = ?";
+			ArrayList<DBField> bindings = new ArrayList<>();
+			bindings.add(DB.setBinding("String", socialId));
+			member = DB.executeQueryOne(sql, bindings, new Member());
+		}
+		 
+		return member;
 	}
 
 }
