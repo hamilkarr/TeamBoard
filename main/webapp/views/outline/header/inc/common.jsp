@@ -29,6 +29,7 @@
 
 <!--com/models/kanban/kanban.java-->
 <!--show-bar z-index처리, 메뉴scroll고정 -->
+<!-- class='on' 클릭했을때, 링크이동할때 색변함 -->
 <nav>
 	<ul class='nav_list layout_width'>
 		<li class='box'

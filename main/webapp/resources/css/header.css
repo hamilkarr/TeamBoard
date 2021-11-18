@@ -13,6 +13,8 @@
 
 nav {
 	background-color: black;
+	position: absolute;
+	width: 100%;
 }
 
 nav .nav_list .box {
@@ -54,4 +56,9 @@ nav .show-bar {
 	flex-direction: column;
 	height: 230px;
 	padding-top: 30px;
+}
+  
+.fixed-nav {
+	position: fixed; 
+	top:0px;
 }

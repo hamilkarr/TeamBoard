@@ -19,34 +19,15 @@ $(function() {
     $("nav").mouseout(function () {
         $(".show-bar").hide();
     });
-});
 
-$(function () {
-
-    $(window).scroll(function () {
+        const navOffset = $( 'nav' ).offset();
+        $( window ).scroll( function() {
+          if ( $( window ).scrollTop() > navOffset.top ) {
+            $( 'nav' ).addClass( 'fixed-nav' );
+          }
+          else {
+            $( 'nav' ).removeClass( 'fixed-nav' );
+          }
+        });
         
-      const top = $("section").offset().top;
-      const st = $(window).scrollTop();
-      if (st >= top) {
-        // fixed 클래스 추가
-        if (!$("nav").hasClass("fixed")) {
-          $("nav").addClass("fixed");
-        }
-      } else {
-        // fixed 클래스 제거
-        $("nav").removeClass("fixed");
-      }
-    });
-  });
-
-const nav = document.querySelector('#main'); 
-const navTop = nav.offsetTop; 
-function fixNav() { 
-    if (window.scrollY >= navTop) { 
-        document.body.classList.add('fixed-nav'); 
-    } else { 
-        document.body.classList.remove('fixed-nav'); 
-    } 
-} 
-
-window.addEventListener('scroll', fixNav);
+});
