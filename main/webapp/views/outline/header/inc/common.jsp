@@ -10,17 +10,24 @@
 <c:set var="isLogin" value="<%=isLogin%>" />
 <%-- <c:set var="member" value="<%=member%>" /> --%>
 <header>
-	<!--로그인 전 로그인 버튼만 // 로그인 후, OOO님 환영합니다!, 로그아웃// OOO님(hover 밑줄) 클릭하면 회원정보 수정페이지로 넘어감.-->
+	<!--로그인 전 로그인 버튼만 // 로그인 후, 안녕하세요! ooo님 
+		로그아웃// OOO님(hover 밑줄) 클릭하면 회원정보 수정페이지로 넘어감.-->
 	<div class="main_top">
 		<div class='inner layout_width'>
 		<c:choose>
 			<c:when test="${isLogin}">
-				<a href="${rootURL}/member/logout">로그아웃</a>
-				<a href="${rootURL}/member/info">회원정보수정</a>
+				<div class="profile">안녕하세요! <a href="${rootURL}/member/info">qwerasdfzx(아이디)</a>님</div>
+				<a class="islogin logout" href="${rootURL}/member/logout">
+					<span>로그아웃</span>
+				</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${rootURL}">로그인</a>
-				<a href="${rootURL}/member/join">회원가입</a>
+				<a class="islogin" href="${rootURL}">
+					<i class="xi-user-o"></i>
+					<span>로그인</span>
+				</a>
+				<!-- 로그인창에서 회원가입 -->
+				<!-- <a href="${rootURL}/member/join">회원가입</a> -->
 			</c:otherwise>
 		</c:choose>
 		</div>
@@ -28,8 +35,8 @@
 </header>
 
 <!--com/models/kanban/kanban.java-->
-<!--show-bar z-index처리, 메뉴scroll고정 -->
-<!-- class='on' 클릭했을때, 링크이동할때 색변함 -->
+<!--show-bar z-index처리(게시판 영역 합친후)-->
+<!-- class='on' 클릭했을때, 링크이동할때 색변함 ??-->
 <nav>
 	<ul class='nav_list layout_width'>
 		<li class='box'
