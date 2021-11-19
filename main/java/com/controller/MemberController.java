@@ -1,10 +1,5 @@
 package com.controller;
 
-<<<<<<< HEAD
-public class MemberController {
-
-}
-=======
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -401,4 +396,3 @@ public class MemberController extends HttpServlet {
 }
 
 
->>>>>>> 9baef2428850bc88fd4ed1f32d5cfe5673ab6181
