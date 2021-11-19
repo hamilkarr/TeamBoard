@@ -54,7 +54,7 @@ h3 {
 
 .tit_list{
 	overflow: hidden;
-	height: 50px;
+	height: 70px;
 	padding-top: 20px;
 	padding-left: 0px;
 }
@@ -62,12 +62,16 @@ h3 {
 .tit_list li {
 	float: left;  
     text-decoration: none;
-    padding-left: 38px;
     padding-right: 2px;
 }
 
 .tit_list li a {
 	color: #e89407;
+}
+
+.tit_link{
+	padding-left: 38px;
+
 }
 
 .tit_link::before {

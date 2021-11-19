@@ -1,7 +1,13 @@
-<%@ page contentType="text/html; charset=utf-8" %>
-<script src="../resources/js/paging.js"></script>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.models.Dto" %> --%>
+<%
+	String rootURL = (String)request.getAttribute("rootURL");
+%>
+<c:set var="rootURL" value="<%=rootURL%>" />
 
-<!--Kanban/views/outline/header/inc/common.jsp-->
+<script src="../resources/js/paging.js"></script>
 <!--메인페이지 상단 S -->
 <header>
 	<div class="main_top layout_width">
@@ -74,16 +80,21 @@
 	</ul>
 </nav>
 <!--메인페이지 상단 E-->
-
 <!-- 배너S -->
 <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-        	<img src='../resources/css/banner/kakao.jpeg'>
+        	<img src='${rootURL}/resources/css/banner/banner0.jpeg'>
         </div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">
+        	<img src='${rootURL}/resources/css/banner/banner1.jpeg'>
+        </div>
+        <div class="swiper-slide">
+        	<img src='${rootURL}/resources/css/banner/banner2.jpeg'>
+        </div>
+        <div class="swiper-slide">
+        	<img src='${rootURL}/resources/css/banner/banner3.jpeg'>
+        </div>
       </div>
       <div class="swiper-pagination"></div>
 </div>
@@ -107,8 +118,13 @@
 				<th>작성일</th>
 			</tr>
 		</thead>
-		<tbody class='board_content'>
-		<%-- <jsp:include page="_list.jsp" /> --%>
+		<tbody class="board_content">
+			<tr class="tr_list">
+				<td>구분</td>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>작성일</td>
+			</tr>
 		</tbody>
 	</table>
 	<div id="board_bttom">
@@ -119,4 +135,3 @@
 	</div>
 </div>
 <!-- 게시판 목록E -->
-      
