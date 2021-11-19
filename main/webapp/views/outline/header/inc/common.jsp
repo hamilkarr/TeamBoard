@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%-- <%@ page  import="com.models.member.*" %> --%>
+<%@ page  import="com.models.member.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String rootURL = (String)request.getAttribute("rootURL");
 	boolean isLogin = (Boolean)request.getAttribute("isLogin");
-	/* Member member = (Member)request.getAttribute("member"); */
+	Member member = (Member)request.getAttribute("member");
 %>
 <c:set var="rootURL" value="<%=rootURL%>" />
 <c:set var="isLogin" value="<%=isLogin%>" />
-<%-- <c:set var="member" value="<%=member%>" /> --%>
+<c:set var="member" value="<%=member%>" />
 <header>
 	<!--로그인 전 로그인 버튼만 // 로그인 후, 안녕하세요! ooo님 
 		로그아웃// OOO님(hover 밑줄) 클릭하면 회원정보 수정페이지로 넘어감.-->
@@ -16,7 +16,8 @@
 		<div class='inner layout_width'>
 		<c:choose>
 			<c:when test="${isLogin}">
-				<div class="profile">안녕하세요! <a href="${rootURL}/member/info">qwerasdfzx(아이디)</a>님</div>
+				<%-- <div class="profile">안녕하세요! <a href="${rootURL}/member/info">qwerasdfzx(아이디)</a>님</div> --%>
+				<div class="profile">안녕하세요! <a href="${rootURL}/member/info"> (<c:out value="${member.memId}" />)</a>님</div>
 				<a class="islogin logout" href="${rootURL}/member/logout">
 					<span>로그아웃</span>
 				</a>
