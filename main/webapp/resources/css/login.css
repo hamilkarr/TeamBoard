@@ -13,6 +13,8 @@ a{
 	color:black;
 }
 
+/** 헤더 list와 로그인박스가 겹침! */
+
 /** main/index.jsp 로그인 */
 
 .login_tit {

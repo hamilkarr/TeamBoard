@@ -1,5 +1,27 @@
+/**공통**/
 
+* {
+  	box-sizing: border-box;
+  	font-family: "Noto Sans KR", sans-serif;
+}
 
+html {
+  	font-size: 18px;
+}
+
+body {
+  	margin: 0 20px;
+  	color: #333;
+}
+
+a {
+  	text-decoration: none;
+  	color: #333;
+}
+
+/** 헤더 list와 writebox가 겹침! */
+
+/** 작성 board/write.jsp */
 .writebox {
 	width: 1200px;
 	height: auto;
