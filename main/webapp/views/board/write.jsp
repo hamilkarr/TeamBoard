@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.models.Dto" %>
-
 <%
 	String rootURL = (String)request.getAttribute("rootURL");
 %>
@@ -12,19 +11,17 @@
 
 <div class="writebox">
 <form class="write-form" name='writeFrm' method="post" action="write" target='ifrmHidden' autocomplete='off'>
-	<c:if test='${board != null}'>
-	<input type='hidden' name='idx' value='${board.idx}'/>
-	</c:if>
+		<input type='hidden' name='memId' value="${member.memId}"/>	
 		<div class="category_box">
-			<select class="select_btn">
+			<select name="status" class="select_btn">
 				<option value="게시판1">전체</option>
-				<option value="게시판2">일반</option>
-				<option value="게시판3">팁과 정보</option>
+				<option value="normal">일반</option>
+				<option value="tip">팁과 정보</option>
 			</select>
 		</div>
 		<div class="text_box">
-			<input type="text" name="subject" placeholder="제목을 입력해주세요." value="<c:out value='${board.subject}' />">
-			<input type="text" name="writer" placeholder="작성자를 입력해주세요." value="<c:out value='${board.writer}' />">
+			<input type="text" name="postTitle" placeholder="제목을 입력해주세요." value="<c:out value='${board.subject}' />">
+
 		</div>
 			<textarea id='content' name="content" width="700" height="500"><c:out value="${board.content}" /></textarea>
 			<span class='addImage'>이미지 추가</span>

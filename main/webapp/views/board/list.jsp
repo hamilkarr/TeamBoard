@@ -48,12 +48,14 @@
 			</tr>
 		</thead>
 		<tbody class="board_content">
+		<c:forEach var="item" items="${list}">
 			<tr class="tr_list">
-				<td>구분</td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-			</tr>
+					<td><c:out value="${item.status}"/></td>
+					<td><c:out value="${item.postTitle}"/></td>
+					<td><c:out value="${item.memId}"/></td>
+					<td><c:out value="${item.regDt}"/></td>		
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	<div id="board_bttom">
