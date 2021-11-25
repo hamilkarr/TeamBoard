@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.models.board.BoardDao;
+import com.core.Pagination;
 import com.models.board.Board;
 import com.models.board.BoardDao;
 
@@ -67,18 +68,23 @@ public class BoardController extends HttpServlet{
 		rd.include(req, res);
 	}	
 }
-	private void listController(HttpServletRequest req, HttpServletResponse res)
+	private void listController(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException{
 		try {			
 			BoardDao dao = BoardDao.getInstance();
-			ArrayList<Board> list = dao.getList();
-			req.setAttribute("list", list);
+			ArrayList<Board> list = dao.getList(request);
+			
+			int total = dao.getTotal();
+			Pagination pagination = new Pagination(request, total);
+			String pagingHtml = pagination.getPageHtml();
+			
+			request.setAttribute("list", list);
+			request.setAttribute("pagingHtml", pagingHtml);
 		} catch (Exception e) {
-			out.printf("<script>alert('%s');history.back();</script>", e.getMessage());
-			return;
+			out.printf("<script>alert('%s');history.back();</script>", e.getMessage());			
 		}
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/views/board/list.jsp");
-		rd.include(req, res);
+		RequestDispatcher rd = request.getRequestDispatcher("/views/board/list.jsp");
+		rd.include(request, response);
 	}
 }
