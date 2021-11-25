@@ -17,7 +17,7 @@ a{
 
 /** main/index.jsp 로그인 */
 
-.login_tit {
+.login_tit, .join_tit{
 	font-size: 30px;
 	font-weight: bold;
 	text-align: center;
@@ -111,4 +111,23 @@ a{
 	height: 60px;
 	margin:8px 1px;
 	padding:0 28px 0 28px;
+}
+
+/** member/form.jsp */
+
+.joinbox {
+	width: 550px; 
+	height: 750px;
+}
+
+.joinbox input[type='reset'] {
+	height: 36px;
+	float: right;
+	font-size: 15px;
+	color: #ffffff;
+	background-color: black;
+	border: none; 
+	cursor: pointer;
+	border-radius: 3px;
+	margin: 12px 0 20px;
 }
