@@ -7,7 +7,7 @@
 <c:set var="rootURL" value="<%=rootURL%>" />
 <script src="<%=rootURL%>/resources/js/form.js"></script>
 <!-- 임시로css링크 넣어둠 -->
-<link href='<%=rootURL%>/resources/css/write.css' rel='stylesheet' style='text/css' />
+<link href='<%=rootURL%>/resources/css/write.css' rel='stylesheet' type='text/css' />
 
 <div class="writebox">
 <form class="write-form" name='writeFrm' method="post" action="write" target='ifrmHidden' autocomplete='off'>
