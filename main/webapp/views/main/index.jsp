@@ -9,7 +9,7 @@
 <c:set var="naverCodeURL" value="<%=naverCodeURL%>" />
 <c:set var="kakaoCodeURL" value="<%=kakaoCodeURL %>" />
 <!--임시로 css경로 적어둠  -->
-<link href='<%=rootURL%>/resources/css/member.css' rel='stylesheet' style='text/css' />
+<link href='<%=rootURL%>/resources/css/login.css' rel='stylesheet' style='text/css' />
 <main>
 		<div class="loginbox">
 		<div class='login_tit'>로그인</div>

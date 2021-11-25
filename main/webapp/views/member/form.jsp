@@ -2,8 +2,6 @@
 <%@ page import="com.models.member.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
-String rootURL = (String)request.getAttribute("rootURL");
-
 Member member = null;
 if (request.getAttribute("member") != null) {
 	member = (Member)request.getAttribute("member");
@@ -20,12 +18,9 @@ if (request.getAttribute("socialMember") != null) {
 <c:set var="action" value="<%=action%>" />
 <c:set var="socialType" value="<%=socialType%>" />
 <c:set var="socialMember" value="<%=socialMember%>" />
-<c:set var="rootURL" value="<%=rootURL%>" />
-<!--임시로 css경로 적어둠  -->
-<link href='<%=rootURL%>/resources/css/member.css' rel='stylesheet' style='text/css' />
 <main>
-	<div class='joinbox loginbox'>
-		<div class='join_tit'>
+	<div class='join_box login_box'>
+		<div class='tit'>
 			<c:if test="${socialType != 'none'}">
 				<c:choose>
 					<c:when test="${socialType == 'naver'}">
@@ -99,7 +94,7 @@ if (request.getAttribute("socialMember") != null) {
 					<input type="text" name="cellPhone" value="${member.cellPhone}">
 				</dd>
 			</dl>
-			<input type="reset" value="새로 작성하기">
+			<input type="reset" value="다시입력">
 			<c:choose>
 				<c:when test="${member == null}">
 					<input type="submit" value="회원가입">
