@@ -28,6 +28,7 @@ CREATE TABLE `member` (
   `memPw` varchar(65) NOT NULL,
   `memPwHint` varchar(50) NOT NULL,
   `memNm` varchar(30) NOT NULL,
+  `memLv` enum('silver','gold','platinum','admin') DEFAULT 'silver' COMMENT '회원 등급',
   `cellPhone` varchar(11) DEFAULT NULL,
   `socialType` enum('none','kakao','naver') DEFAULT 'none',
   `socialId` varchar(65) DEFAULT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE `member` (
   `modDt` datetime DEFAULT NULL,
   PRIMARY KEY (`memNo`),
   UNIQUE KEY `memId` (`memId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +45,6 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (6,'test1234','$2a$10$mHAGPDdsWMCMDRXKRetn0e44emMM8ALJJS7ILE3HBVaeVaHFDgRpO','힌트','test1234','01022223333','none','','2021-11-17 09:12:43',NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-17  9:29:53
+-- Dump completed on 2021-11-19 18:17:31
