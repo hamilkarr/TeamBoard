@@ -78,9 +78,77 @@ public class BoardDao {
 					
 			rs.close();
 		}catch(SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
+			Logger.log(e);
 		}
 		return list;
 	}
 	
+public Board get(int postNm) {
+		
+		Board board = null;
+		String sql = "SELECT * FROM board WHERE postNm = ?";
+			try(Connection conn = DB.getConnection();
+					PreparedStatement pstmt = conn.prepareStatement(sql)){
+					pstmt.setInt(1, postNm);
+					ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					board = new Board(rs);
+				}
+				rs.close();
+			}catch(SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return board;		
+	}
+
+public Board get(HttpServletRequest req) {
+	int postNm = 0;
+	if (req.getParameter("postNm") != null) {
+		postNm = Integer.valueOf(req.getParameter("postNm"));
+	}
+	return get(postNm);
+}
+	
+	public boolean edit(HttpServletRequest req) {
+		
+		String sql = "UPDATE board SET postTitle=?, status =?, content=? WHERE postNm=?";
+		try(Connection conn = DB.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			req.setCharacterEncoding("UTF-8");
+			int postNm = Integer.parseInt(req.getParameter("postNm").trim());
+			pstmt.setString(1, req.getParameter("postTitle"));
+			pstmt.setString(2, req.getParameter("status"));
+			pstmt.setString(3, req.getParameter("content"));
+			pstmt.setInt(4, postNm);
+			
+			int rs = pstmt.executeUpdate();
+			if(rs>0) {
+				return true;
+			}
+		} catch(Exception e) {
+			Logger.log(e);
+		}
+
+		return false;
+	}
+	
+	public boolean delete(int postNm) {
+			
+		String sql = "DELETE FROM board WHERE postNm=?";
+		try(Connection conn = DB.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			pstmt.setInt(1,postNm);
+			
+			int rs = pstmt.executeUpdate();
+			if(rs > 0) {
+				return true;
+			}
+			
+			} catch(Exception e) {
+				Logger.log(e);
+			}
+		return false;
+	}
 }

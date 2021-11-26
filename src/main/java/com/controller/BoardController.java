@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.models.board.BoardDao;
+import com.core.Logger;
 import com.models.board.Board;
 import com.models.board.BoardDao;
 
@@ -37,6 +38,15 @@ public class BoardController extends HttpServlet{
 		case"list" : //게시글 목록
 			listController(request, response);
 			break;
+		case"edit": // 게시글 조회
+			editController(request, response);
+			break;
+		case"delete": // 게시글 삭제
+			deleteController(request, response);
+			break;
+		case"view": //게시글 상세보기
+			viewController(request,response);
+			break;
 		default : //없는 페이지
 			RequestDispatcher rd = request.getRequestDispatcher("/views/error/404.jsp");
 			rd.forward(request, response);
@@ -63,6 +73,8 @@ public class BoardController extends HttpServlet{
 				out.printf("<script>alert('%s');</script>", e.getMessage());
 			} 
 		} else {
+			
+			req.setAttribute("mode","write");
 		RequestDispatcher rd = req.getRequestDispatcher("/views/board/write.jsp");
 		rd.include(req, res);
 	}	
@@ -79,6 +91,81 @@ public class BoardController extends HttpServlet{
 		}
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/views/board/list.jsp");
+		rd.include(req, res);
+	}
+	
+	private void editController(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException{
+		BoardDao dao = BoardDao.getInstance();
+		if(httpMethod.equals("POST")) {
+			try {
+				boolean rs = dao.edit(req);
+				if(!rs) {
+					throw new Exception("수정에 실패하였습니다.");
+				}
+				out.print("<script>parent.location.href='list';</script>");
+			} catch(Exception e) {
+				out.printf("<script>alert('%s');</script>", e.getMessage());
+			}
+		}else {
+			try {
+				int postNm = Integer.parseInt(req.getParameter("postNm"));
+				
+				if (req.getParameter("postNm") == null) {
+					throw new Exception("잘못된 접근입니다.");
+				}
+				
+				Board board = dao.get(postNm);
+				if(board == null) {
+					throw new Exception("게시글이 없습니다!");
+				}
+				
+				req.setAttribute("mode", "edit");
+				req.setAttribute("board", board);
+			} catch(Exception e){
+				out.printf("<script>alert('%s');</script>", e.getMessage());
+				return;
+			}
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/views/board/write.jsp");
+		rd.include(req, res);
+		}
+	}
+	
+	public void deleteController(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException{
+		try {
+			if (req.getParameter("postNm") == null) {
+				throw new Exception("잘못된 접근입니다.");
+			}
+			BoardDao dao = BoardDao.getInstance();
+			int postNm = Integer.parseInt(req.getParameter("postNm"));
+			boolean rs = dao.delete(postNm);
+			if (!rs) {
+				throw new Exception("삭제 실패하였습니다.");
+			}
+			
+			out.print("<script>parent.location.href='list';</script>");
+		} catch (Exception e) {
+			out.printf("<script>alert('%s');</script>", e.getMessage());
+		}
+	}
+	
+	public void viewController(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException{
+		BoardDao dao = BoardDao.getInstance();
+		int postNm = Integer.parseInt(req.getParameter("postNm"));
+		try {
+			if (req.getParameter("postNm") == null) {
+				throw new Exception("잘못된 접근입니다.");
+			}
+			Board view = dao.get(postNm);
+			req.setAttribute("view", view);
+		} catch(Exception e) {
+			Logger.log(e);
+		}
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/views/board/view.jsp");
 		rd.include(req, res);
 	}
 }

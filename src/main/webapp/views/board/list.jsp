@@ -50,8 +50,12 @@
 		<tbody class="board_content">
 		<c:forEach var="item" items="${list}">
 			<tr class="tr_list">
-					<td><c:out value="${item.status}"/></td>
-					<td><c:out value="${item.postTitle}"/></td>
+					<td>
+						<c:out value="${item.status}"/></td>
+					<td>
+						<a href="view?postNm=${item.postNm}">
+							<c:out value="${item.postTitle}"/></a>
+					</td>
 					<td><c:out value="${item.memId}"/></td>
 					<td><c:out value="${item.regDt}"/></td>		
 				</tr>
@@ -60,9 +64,9 @@
 	</table>
 	<div id="board_bttom">
 		<a class="page" href="#">다음 페이지</a>
-		<button class="write_btn">
-			<a class="write" href="write">글쓰기</a>
-		</button>
+		<a href="write">
+			<button class="write_btn">글쓰기</button>
+		</a>
 	</div>
 </div>
 <!-- 게시판 목록E -->
