@@ -9,7 +9,7 @@ $(function() {
         //transition 효과추가?
       });
 
-    $(".box").mouseout(function () {
+    $("nav").mouseout(function () {
         $(".inner-bar").removeClass("on");
     });
 
@@ -19,7 +19,7 @@ $(function() {
 
     });
 
-    $(".box").mouseout(function () {
+    $("nav").mouseout(function () {
       $(".show-bar").hide();
     });
 
