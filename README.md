@@ -1,6 +1,25 @@
 # TeamBoard
 팀 포트폴리오 게시판 제작 저장소
 
+## Update (11-28)
+![image](https://user-images.githubusercontent.com/84768566/143769221-d78d71d1-c957-4da2-bfcc-b36e4c8fe8a2.png)
+
+com.core.Board
+ - isNotice 추가
+
+list.jsp
+ - {isNotice == 1}일때 notice클래스 추가
+
+board.css
+ - notice 배경색 변경
+ - table 셀간격 삭제 (collapse)
+
+<br>
+![image](https://user-images.githubusercontent.com/84768566/143769224-cb1eb819-f49f-47bc-82c0-7e85ced2b981.png)
+ - 페이지네이션 css추가 (develop브랜치에 미리 올림 > 소스 변경 없음)
+
+<br>
+
 ## Update (11-26)
 ![image](https://user-images.githubusercontent.com/84768566/143518451-49211f9d-3d11-47e9-b41e-3a8b0904f86d.png)
 
