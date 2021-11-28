@@ -14,8 +14,8 @@ board.css
  - notice 배경색 변경
  - table 셀간격 삭제 (collapse)
 
-<br>
 ![image](https://user-images.githubusercontent.com/84768566/143769224-cb1eb819-f49f-47bc-82c0-7e85ced2b981.png)
+
  - 페이지네이션 css추가 (develop브랜치에 미리 올림 > 소스 변경 없음)
 
 <br>
