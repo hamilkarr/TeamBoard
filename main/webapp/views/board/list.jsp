@@ -1,9 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%-- <%@ page import="java.util.ArrayList" %> <%@ page
-import="com.models.Dto" %> --%> <% String rootURL = (String)request.getAttribute("rootURL"); %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%
+String rootURL = (String) request.getAttribute("rootURL");
+String pagingHtml = (String) request.getAttribute("pagingHtml");
+%>
 <c:set var="rootURL" value="<%=rootURL%>" />
-
-<script src="../resources/js/paging.js"></script>
 
 <!-- 게시판 목록S -->
 <div class="inner_box">
@@ -34,24 +35,18 @@ import="com.models.Dto" %> --%> <% String rootURL = (String)request.getAttribute
           </td>
           <td><c:out value="${item.memId}" /></td>
           <td><c:out value="${item.regDt}" /></td>
+          <td>조회수</td>
         </tr>
       </c:forEach>
     </tbody>
   </table>
-  레벨 아이콘 예시..<i class="xi-naver-square"></i>
-  <span class="material-icons">coronavirus</span>
-  <span class="material-icons">stream</span>
-  <span class="material-icons">workspace_premium</span>
-  <span class="material-icons">transgender</span>
-  <span class="material-icons">compost</span>
-  <span class="material-icons">hive</span><br />
-  배틀 그라운드 아이콘 ..
-  <div>
-    <span class="ico_board_tier silver"></span>
-    <span class="ico_board_tier gold"></span>
-    <span class="ico_board_tier platinum"></span>
-    <span class="ico_board_tier bronze"></span>
-  </div>
+	<div>
+		아이콘 모음<i class='xi-naver-square'></i>
+		<span class="ico_board_tier silver"></span>
+		<span class="ico_board_tier gold"></span>
+		<span class="ico_board_tier platinum"></span>
+		<span class="ico_board_tier bronze"></span>
+		</div>
   <div id="board_bttom">
     <%=pagingHtml%>
     <button class="write_btn" onclick="location.href='write'">글쓰기</button>
