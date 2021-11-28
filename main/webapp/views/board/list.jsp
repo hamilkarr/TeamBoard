@@ -1,32 +1,32 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.models.Dto" %> --%>
 <%
-	String rootURL = (String)request.getAttribute("rootURL");
-	String pagingHtml = (String)request.getAttribute("pagingHtml");
+String rootURL = (String) request.getAttribute("rootURL");
+String pagingHtml = (String) request.getAttribute("pagingHtml");
 %>
 <c:set var="rootURL" value="<%=rootURL%>" />
 
-<script src="../resources/js/paging.js"></script>
+<!-- <script src="../resources/js/paging.js"></script> -->
 
 <!-- 배너S -->
 <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-        	<img src='${rootURL}/resources/css/banner/banner0.jpeg'>
-        </div>
-        <div class="swiper-slide">
-        	<img src='${rootURL}/resources/css/banner/banner1.jpeg'>
-        </div>
-        <div class="swiper-slide">
-        	<img src='${rootURL}/resources/css/banner/banner2.jpeg'>
-        </div>
-        <div class="swiper-slide">
-        	<img src='${rootURL}/resources/css/banner/banner3.jpeg'>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<img src='${rootURL}/resources/css/banner/banner0.jpeg'>
+		</div>
+		<div class="swiper-slide">
+			<img src='${rootURL}/resources/css/banner/banner1.jpeg'>
+		</div>
+		<div class="swiper-slide">
+			<img src='${rootURL}/resources/css/banner/banner2.jpeg'>
+		</div>
+		<div class="swiper-slide">
+			<img src='${rootURL}/resources/css/banner/banner3.jpeg'>
+		</div>
+	</div>
+	<div class="swiper-pagination"></div>
 </div>
 <!-- 배너E -->
 <!-- 게시판 목록S -->
@@ -49,23 +49,22 @@
 			</tr>
 		</thead>
 		<tbody class="board_content">
-		<c:forEach var="item" items="${list}">
-			<tr class="tr_list">
-					<td><c:out value="${item.status}"/></td>
-					<td><c:out value="${item.postTitle}"/></td>
-					<td><c:out value="${item.memId}"/></td>
-					<td><c:out value="${item.regDt}"/></td>		
+			<c:forEach var="item" items="${list}">
+				<tr class="tr_list">
+					<td><c:out value="${item.status}" /></td>
+					<td><a href="view?postNm=${item.postNm}"><c:out value="${item.postTitle}" /></a></td>
+					<td><c:out value="${item.memId}" /></td>
+					<td><c:out value="${item.regDt}" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<div id="board_bttom">
-		<%=pagingHtml%>
 		<!-- <a class="page" href="#">다음 페이지</a> -->
+		<%=pagingHtml%>
 		<button class="write_btn">
 			<a class="write" href="write">글쓰기</a>
 		</button>
 	</div>
 </div>
-
 <!-- 게시판 목록E -->
