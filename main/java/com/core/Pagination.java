@@ -127,7 +127,7 @@ public class Pagination {
 		if (num > 0) {
 			sb.append("<li class='page'>");
 			sb.append("<a href='?page=1'>");
-			sb.append("first");
+			sb.append("<<");
 			sb.append("</a>");
 			sb.append("</li>");
 		}
@@ -136,7 +136,7 @@ public class Pagination {
 		if (prevNo > 0) {
 			sb.append("<li class='page'>");
 			sb.append("<a href='?page=" + prevNo + "'>");
-			sb.append("prev");
+			sb.append("<");
 			sb.append("</a>");
 			sb.append("</li>");
 		}
@@ -159,7 +159,7 @@ public class Pagination {
 		if (nextNo > 0) {
 			sb.append("<li class='page'>");
 			sb.append("<a href='?page=" + nextNo + "'>");
-			sb.append("next");
+			sb.append(">");
 			sb.append("</a>");
 			sb.append("</li>");
 		}
@@ -168,7 +168,7 @@ public class Pagination {
 		if (num < lastNum) {
 			sb.append("<li class='page'>");
 			sb.append("<a href='?page=" + lastPageNo + "'>");
-			sb.append("last");
+			sb.append(">>");
 			sb.append("</a>");
 			sb.append("</li>");
 		}
