@@ -2,7 +2,7 @@
 .swiper {
   width: 100%;
   height: 100%;
-
+  margin-top: 90px;
 }
 
 .swiper-slide {
@@ -42,7 +42,7 @@
 
 /* 게시판 목록 tit */
 h3 {
-    padding-top: 90px;
+    padding-top: 50px;
     margin-bottom: 8px;
     font-size: 45px;
     font-weight: normal;
@@ -56,7 +56,7 @@ h3 {
 
 .tit_list{
 	overflow: hidden;
-	height: 70px;
+	height: 50px;
 	padding-top: 20px;
 	padding-left: 0px;
 }
@@ -64,15 +64,12 @@ h3 {
 .tit_list li {
 	float: left;  
     text-decoration: none;
+    padding-left: 38px;
     padding-right: 2px;
 }
 
 .tit_list li a {
 	color: #e89407;
-}
-
-.tit_link{
-	padding-left: 38px;
 }
 
 .tit_link::before {
@@ -84,35 +81,6 @@ h3 {
 	background : #e6e5e5;
 }
 
-
-
-/* n 버튼!!!! 수정할부분!!!!!  */
-.xi-naver-square {
-	color : #e58300;
-}
-.ico_board_tier{
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
-}
-.ico_board_tier.silver {
-    background-position: -30px -60px;
-}
-.ico_board_tier.gold {
-    background-position: right -90px;
-}
-.ico_board_tier.platinum {
-    background-position: right -120px;
-}
-.ico_board_tier.bronze {
-    background-position: -30px -30px;
-}
-
-
-
-
-
 /* 게시판 목록 table */
 .board_table{
 	width: 100%;
@@ -123,14 +91,10 @@ h3 {
 
 .table_tit th {
 	padding: 25px 0;
-	font-size:16px;
-	font-weight: normal;
+	font-size:20px;
 	color: #ffffff;
 	background-color: #252525;
 	letter-spacing: 2px;
-}
-.table_tit .th_tit {
-	width:450px;
 }
 
 .tr_list td {
@@ -143,10 +107,10 @@ h3 {
 	text-align: center;
 }
 
-/* .page {
+.page {
 	background-color: #252525;
 	color: #ffffff;
-} */
+}
 
 .write_btn {
 	float : right;
@@ -156,11 +120,9 @@ h3 {
 	height: 50px;
 	background-color: #f19a09;
 	border: 0;
-	color: #fff;
-    font-size: 15px;
-    cursor: pointer;
 }
 
-.write_btn:hover {
-	background-color: #e18100;
+.write {
+	color: #ffffff;
+	font-size: 15px;
 }
