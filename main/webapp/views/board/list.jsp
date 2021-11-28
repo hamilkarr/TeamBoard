@@ -8,8 +8,6 @@ String pagingHtml = (String) request.getAttribute("pagingHtml");
 %>
 <c:set var="rootURL" value="<%=rootURL%>" />
 
-<!-- <script src="../resources/js/paging.js"></script> -->
-
 <!-- 배너S -->
 <div class="swiper mySwiper">
 	<div class="swiper-wrapper">
@@ -43,9 +41,10 @@ String pagingHtml = (String) request.getAttribute("pagingHtml");
 		<thead>
 			<tr class="table_tit">
 				<th>구분</th>
-				<th>제목</th>
+				<th class="th_tit">제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
 		</thead>
 		<tbody class="board_content">
@@ -59,11 +58,26 @@ String pagingHtml = (String) request.getAttribute("pagingHtml");
 			</c:forEach>
 		</tbody>
 	</table>
-	<div id="board_bttom">
-		<!-- <a class="page" href="#">다음 페이지</a> -->
+	레벨 아이콘 예시..<i class='xi-naver-square'></i>
+	<span class="material-icons">coronavirus</span>
+	<span class="material-icons">stream</span>
+	<span class="material-icons">workspace_premium</span>
+	<span class="material-icons">transgender</span>
+	<span class="material-icons">compost</span>
+	<span class="material-icons">hive</span><br>
+	배틀 그라운드 아이콘 ..
+	<div>
+		<span class="ico_board_tier silver"></span>
+		<span class="ico_board_tier gold"></span>
+		<span class="ico_board_tier platinum"></span>
+		<span class="ico_board_tier bronze"></span>
+             
+		
+	</div>
+	<div id="board_bttom">		
 		<%=pagingHtml%>
-		<button class="write_btn">
-			<a class="write" href="write">글쓰기</a>
+		<button class="write_btn" onclick="location.href='write'">
+			글쓰기
 		</button>
 	</div>
 </div>

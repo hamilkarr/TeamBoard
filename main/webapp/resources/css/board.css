@@ -84,6 +84,35 @@ h3 {
 	background : #e6e5e5;
 }
 
+
+
+/* n 버튼!!!! 수정할부분!!!!!  */
+.xi-naver-square {
+	color : #e58300;
+}
+.ico_board_tier{
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
+}
+.ico_board_tier.silver {
+    background-position: -30px -60px;
+}
+.ico_board_tier.gold {
+    background-position: right -90px;
+}
+.ico_board_tier.platinum {
+    background-position: right -120px;
+}
+.ico_board_tier.bronze {
+    background-position: -30px -30px;
+}
+
+
+
+
+
 /* 게시판 목록 table */
 .board_table{
 	width: 100%;
@@ -94,10 +123,14 @@ h3 {
 
 .table_tit th {
 	padding: 25px 0;
-	font-size:20px;
+	font-size:16px;
+	font-weight: normal;
 	color: #ffffff;
 	background-color: #252525;
 	letter-spacing: 2px;
+}
+.table_tit .th_tit {
+	width:450px;
 }
 
 .tr_list td {
@@ -123,9 +156,11 @@ h3 {
 	height: 50px;
 	background-color: #f19a09;
 	border: 0;
+	color: #fff;
+    font-size: 15px;
+    cursor: pointer;
 }
 
-.write {
-	color: #ffffff;
-	font-size: 15px;
+.write_btn:hover {
+	background-color: #e18100;
 }
