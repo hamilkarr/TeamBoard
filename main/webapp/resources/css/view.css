@@ -7,10 +7,46 @@
     padding-left: 30px;
 }
 
-.info_head,
-.info_head dl {
+.info_head, .info_head dl {
     display: flex;
-    
+}
+.info_head {
+    color: #787878;
+    background-color: #f2f2f2;
+    height: 70px;
+    padding: 21px 30px 19px;
+}
+
+.info_head dt,
+.info_head dd {
+    line-height: 1.7rem;
+}
+
+.info_head .right_f {
+    margin-left: auto;
+}
+
+.info_head .right {
+    margin-left: 20px;
+}
+
+.info_head dt:after {
+    content: "";
+    width: 1px;
+    height: 1rem;
+    display: inline-block;
+    background-color: #cecece;
+    vertical-align: middle;
+    margin: 0 7px 2px 7px;
+
+}
+
+/* 본문 */
+.view_content {
+    overflow: hidden;
+    word-break: break-all;
+    border-bottom: 1px solid #d9dbde;
+    padding: 50px 50px;
 }
 
 

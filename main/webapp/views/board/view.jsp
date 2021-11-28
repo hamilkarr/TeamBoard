@@ -19,7 +19,7 @@
                     <dt>작성자</dt>
                     <dd><a href=""> <c:out value="${member.memId}(아이디)" /></a></dd> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
                 </dl>
-                <dl class="right">
+                <dl class="right_f">
                     <dt>작성일</dt>
                     <dd>2021.11.25 오후 08:04</dd> <!-- dto -->
                 </dl>     
@@ -29,8 +29,9 @@
                 </dl>
             </div>
         </div>
-        <div class="content">
-            내용
+        <div class="view_content">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </div>
         <div class="view_btns">
             <a href="" class="btn_list"></a>
