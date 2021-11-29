@@ -28,15 +28,21 @@ String pagingHtml = (String) request.getAttribute("pagingHtml");
     </thead>
     <tbody class="board_content">
       <c:forEach var="item" items="${list}">
-        <tr class="tr_list">
-          <td><c:out value="${item.status}" /></td>
+      	<c:choose>
+      		<c:when test="${item.isNotice == 1}">
+      			<tr class="tr_list notice">
+      		</c:when>
+      		<c:otherwise>
+        		<tr class="tr_list">
+        	</c:otherwise>
+        </c:choose>
+          <td><c:out value="${item.status}"/></td>
           <td>
             <a href="view?postNm=${item.postNm}"><c:out value="${item.postTitle}" /></a>
           </td>
           <td><c:out value="${item.memId}" /></td>
           <td><c:out value="${item.regDt}" /></td>
           <td>조회수</td>
-        </tr>
       </c:forEach>
     </tbody>
   </table>

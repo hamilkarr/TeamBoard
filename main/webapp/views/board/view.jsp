@@ -1,27 +1,31 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page  import="com.models.member.*" %>
+<%@ page import="com.models.board.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String rootURL = (String)request.getAttribute("rootURL");
 	boolean isLogin = (Boolean)request.getAttribute("isLogin");
 	Member member = (Member)request.getAttribute("member");
+	Board view = (Board)request.getAttribute("view");
 %>
 <c:set var="rootURL" value="<%=rootURL%>" />
 <c:set var="isLogin" value="<%=isLogin%>" />
 <c:set var="member" value="<%=member%>" />
+<c:set var="view" value="<%=view%>" />
 
 <div class="layout_width">
     <h3>플레이어 게시판</h3>
     <div class="view_head">
-        <div class="head_tit">글 제목</div>
+        <div class="head_tit"><c:out value="${view.postTitle}"/></div>
             <div class="info_head">
                 <dl class="left">
                     <dt>작성자</dt>
-                    <dd><a href=""> <c:out value="${member.memId}(아이디)" /></a></dd> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
+                    <span class="ico_board_tier gold"></span>
+                    <dd><a href=""><c:out value="${view.memId}" /></a></dd> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
                 </dl>
                 <dl class="right_f">
                     <dt>작성일</dt>
-                    <dd>2021.11.25 오후 08:04</dd> <!-- dto -->
+                    <dd><c:out value="${view.regDt}" /></dd> <!-- dto -->
                 </dl>     
                 <dl class="right">
                     <dt>조회수</dt>
@@ -29,9 +33,8 @@
                 </dl>
             </div>
         </div>
-        <div class="view_content">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <div class="view_content">        
+        <c:out value="${view.content }"/> <!-- 작성 글 내용 연동 -->
         </div>
         <div class="view_btns">
             <a href="" class="btn_list"><i class="xi-bars xi-x"></i></a>
@@ -75,9 +78,9 @@
                 <div class="left_cmt">
                     <div class="user_cmt">
                         <span class="ico_board_tier silver"></span>
-                        <div><c:out value="${member.memId}(아이디)" /></div> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
+                        <span><c:out value="${member.memId}" />아이디</span> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
                     </div>
-                    <div class="date_cmt">21.11.25</div> <!-- dto -->
+                    <div class="date_cmt">21.11.25</div> <!-- dto // 최근 24시간 내 댓글은 시간으로 나오는듯. ex) 10:44 -->
                 </div>
                 <span class="border_cmt"></span>
                 <div class="right_cmt">
