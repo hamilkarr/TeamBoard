@@ -40,13 +40,17 @@
         <div class="view_btns">
             <a href="" class="btn_list"><i class="xi-bars xi-x"></i></a>
             <c:choose>
-                <c:when test=""> <!-- 본인 글일때 -->
-                    <a class="btn_write" href="">수정하기</a>
+                <c:when test="${isLogin}"> <!-- 본인 글일때 -->
+                    <a class="btn_write" href="edit?postNm=${view.postNm}">수정하기</a>
                 </c:when>
                 <c:otherwise>
                     <a class="btn_write" onclick="location.href='write'">글쓰기</a>
                 </c:otherwise>
             </c:choose>
+       <%-- <a href="edit?postNm=${view.postNm}"><input type="button" value="글 수정"></a>
+
+			<a href="delete?postNm=${view.postNm}" onclick="return confirm('정말 삭제하시겠습니까?');" target='ifrmHidden'>
+			<input type="button" value="삭제하기"></a> --%>
         </div>
         <!-- 댓글 -->
         <div class="comment">
