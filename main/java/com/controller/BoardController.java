@@ -1,13 +1,16 @@
 package com.controller;
 
+import java.io.*;
+import java.util.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.models.board.*;
+import com.models.comment.*;
 import com.core.*;
 
-import java.io.*;
-import java.util.ArrayList;
+import org.json.simple.*;
 
 public class BoardController extends HttpServlet{
 	private static final long serialVersionUID = -2654268002350534420L;
@@ -44,6 +47,12 @@ public class BoardController extends HttpServlet{
 			break;
 		case"view": //게시글 상세보기
 			viewController(request,response);
+			break;
+		case "comment" : // 댓글 작성 
+			commentController(request, response);
+			break;
+		case "delete_comment" : // 댓글 삭제
+			deleteCommentController(request, response);
 			break;
 		default : //없는 페이지
 			RequestDispatcher rd = request.getRequestDispatcher("/views/error/404.jsp");
@@ -164,11 +173,79 @@ public class BoardController extends HttpServlet{
 				}
 				Board view = dao.get(postNm);
 				req.setAttribute("view", view);
+				
+				// 댓글 
+				ArrayList<Comment> comments = CommentDao.getInstance().getList(postNm);
+				req.setAttribute("comments", comments);
 			} catch(Exception e) {
 				Logger.log(e);
 			}
 
 			RequestDispatcher rd = req.getRequestDispatcher("/views/board/view.jsp");
 			rd.include(req, res);
+		}
+		
+		/**
+		 * 댓글 작성 처리 
+		 * @param request
+		 * @param response
+		 * @throws ServletException
+		 * @throws IOException
+		 */
+		private void commentController(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			CommentDao dao = CommentDao.getInstance();
+			String mode = request.getParameter("mode");
+			mode = (mode == null)?"":mode;
+			try {
+				switch (mode) {
+					/** 댓글 조회 */
+					case "get_comment" :
+						if (request.getParameter("commentNm") != null) {
+							Comment comment = dao.get(request);
+							out.print(comment.getContent());
+						}
+						break;
+					/** 댓글 수정 */
+					case "edit" :
+						HashMap<String, Object> map = new HashMap<>();
+						try {
+							boolean result = dao.edit(request);
+							if (!result) {
+								throw new Exception("댓글 수정 실패!");
+							}
+							map.put("success", true);
+						} catch (Exception e) {
+							map.put("success", false);
+							map.put("message", e.getMessage());
+						}
+						JSONObject json = new JSONObject(map);
+						out.print(json);
+						break;
+					default : 
+						int commentNm = dao.add(request);
+						if (commentNm == 0) {
+							throw new Exception("댓글 등록 실패!");
+						}
+						String url = "../board/view?postNm=" + request.getParameter("postNm") + "&commentNm=" + commentNm;
+						CommonLib.go(out, url, "parent");
+				}
+			} catch (Exception e) {
+				CommonLib.msg(out, e);
+			}
+		}
+		
+		/** 댓글 삭제 */
+		private void deleteCommentController(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			try {
+				boolean result = CommentDao.getInstance().delete(request);
+				if (!result) {
+					throw new Exception("댓글 삭제 실패!");
+				}
+				
+				CommonLib.reload(out, "parent"); // 댓글 삭제 성공시 새로고침
+			} catch (Exception e) {
+				Logger.log(e);
+				CommonLib.msg(out, e.getMessage());
+			}
 		}
 }
