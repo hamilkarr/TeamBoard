@@ -25,6 +25,10 @@ public class BoardDao {
 	}
 
 	public int add(HttpServletRequest request) throws Exception {
+
+		/** 유효성 검사 **/
+		checkData(request);
+
 		int num = 0;
 		String sql = "INSERT INTO board (status, postTitle, content, memId, isNotice) VALUES(?,?,?,?,?)";
 		try (Connection conn = DB.getConnection();
@@ -38,13 +42,13 @@ public class BoardDao {
 			if (request.getParameter("isNotice") != null) {
 				isNotice = Integer.valueOf(request.getParameter("isNotice"));
 			}
-			
+
 			pstmt.setString(1, status);
 			pstmt.setString(2, postTitle);
 			pstmt.setString(3, content);
 			pstmt.setString(4, memId);
 			pstmt.setInt(5, isNotice);
-			
+
 			int result = pstmt.executeUpdate();
 			if (result > 0) {
 				ResultSet rs = pstmt.getGeneratedKeys();
@@ -85,7 +89,7 @@ public class BoardDao {
 		limit = (limit <= 0) ? 15 : limit;
 
 		int offset = (page - 1) * limit;
-		//System.out.println(offset + " : " + limit);
+		// System.out.println(offset + " : " + limit);
 		String sql = "SELECT * FROM board ORDER BY isNotice DESC, regDt DESC LIMIT ?,?";
 		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
@@ -141,7 +145,10 @@ public class BoardDao {
 		return get(postNm);
 	}
 
-	public boolean edit(HttpServletRequest request) {
+	public boolean edit(HttpServletRequest request) throws Exception {
+
+		/** 유효성 검사 **/
+		checkData(request);
 
 		String sql = "UPDATE board SET postTitle=?, status =?, content=?, isNotice = ? WHERE postNm=?";
 		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -151,13 +158,12 @@ public class BoardDao {
 			if (request.getParameter("isNotice") != null) {
 				isNotice = Integer.valueOf(request.getParameter("isNotice"));
 			}
-			
 			pstmt.setString(1, request.getParameter("postTitle"));
 			pstmt.setString(2, request.getParameter("status"));
 			pstmt.setString(3, request.getParameter("content"));
-			pstmt.setInt(4, postNm);
-			pstmt.setInt(5, isNotice);
-			
+			pstmt.setInt(4, isNotice);
+			pstmt.setInt(5, postNm);
+
 			int rs = pstmt.executeUpdate();
 			if (rs > 0) {
 				return true;
@@ -185,5 +191,16 @@ public class BoardDao {
 			Logger.log(e);
 		}
 		return false;
+	}
+
+	public void checkData(HttpServletRequest req) throws Exception {
+
+		String[] required = { "status//어떤게시글인지 정해주세요.", "postTitle//글 제목을 입력해주세요.", "content//내용을 입력해주세요." };
+		for (String s : required) {
+			String[] re = s.split("//");
+			if (req.getParameter(re[0]) == null || req.getParameter(re[0]).trim().equals("")) {
+				throw new Exception(re[1]);
+			}
+		}
 	}
 }

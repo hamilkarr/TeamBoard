@@ -28,15 +28,47 @@ String pagingHtml = (String) request.getAttribute("pagingHtml");
     </thead>
     <tbody class="board_content">
       <c:forEach var="item" items="${list}">
-        <tr class="tr_list">
-          <td><c:out value="${item.status}" /></td>
+      	<c:choose>
+      		<c:when test="${item.isNotice == 1}">
+      			<tr class="tr_list notice">
+      		</c:when>
+      		<c:otherwise>
+        		<tr class="tr_list">
+        	</c:otherwise>
+        </c:choose>
           <td>
-            <a href="view?postNm=${item.postNm}"><c:out value="${item.postTitle}" /></a>
+          	<c:choose>
+	      		<c:when test="${item.status == 'normal'}">
+	      			<c:out value="일반"/>
+	      		</c:when>
+	      		<c:when test="${item.status == 'tip'}">
+	      			<c:out value="팁과 정보"/>
+	      		</c:when>
+	      		<c:otherwise>
+	        		<c:out value="공지사항"/>
+	        	</c:otherwise>
+        	</c:choose>
           </td>
-          <td><c:out value="${item.memId}" /></td>
+          <td>
+            <a href="view?postNm=${item.postNm}">
+            	<c:out value="${item.postTitle}" />
+            	<c:if test="${item.commentCnt > 0}">
+            	<span class='comment_cnt'>[${item.commentCnt}]</span>
+            	</c:if>
+            </a>
+          </td>
+          <td>
+          	<c:choose>
+	      		<c:when test="${item.memId == 'administartor'}">
+	      			<c:out value="관리자"/>
+	      		</c:when>
+	      		<c:otherwise>
+	        		<c:out value="${item.memId}"/>
+	        	</c:otherwise>
+        	</c:choose>
+          </td>
           <td><c:out value="${item.regDt}" /></td>
           <td>조회수</td>
-        </tr>
       </c:forEach>
     </tbody>
   </table>
