@@ -1,9 +1,9 @@
 package com.models.comment;
 
-import java.util.Locale;
 import java.sql.*;
-import com.models.*;
 import java.text.*;
+
+import com.models.*;
 
 /** Comment bean 클래스 */
 public class Comment extends Dto<Comment> {
