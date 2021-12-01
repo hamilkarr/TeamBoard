@@ -1,5 +1,5 @@
-# TeamBoard
-팀 포트폴리오 게시판 제작 저장소
+# Develop Branch
+개발 기간 중 공유 버전으로 사용하는 브랜치 입니다.
 
 ## Update (12-01)
 - 자세한 내역은 (졸려서)나중에.... :sleeping::sleeping:
