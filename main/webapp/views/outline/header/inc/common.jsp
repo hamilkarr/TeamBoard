@@ -17,7 +17,7 @@
 		<c:choose>
 			<c:when test="${isLogin}">
 				<%-- <div class="profile">안녕하세요! <a href="${rootURL}/member/info">qwerasdfzx(아이디)</a>님</div> --%>
-				<div class="profile">안녕하세요! <a href="${rootURL}/member/info"><c:out value="${member.memId}" /></a>님</div>
+				<div class="profile">안녕하세요! <a href="${rootURL}/member/info"> (<c:out value="${member.memId}" />)</a>님</div>
 				<a class="islogin logout" href="${rootURL}/member/logout">
 					<span>로그아웃</span>
 				</a>
@@ -66,7 +66,7 @@
 			>
 				<a class="nav_over" href="${rootURL}/kanban/list?status=progress">커뮤니티</a>
 				<ul class="show-bar">
-					<li><a href="#">플레이어 게시판</a></li>
+					<li><a href="${rootURL}/board/list">플레이어 게시판</a></li>
 					<li><a href="#">(준비중) 미디어 게시판</a></li>
 					<li><a href="#">(준비중) DUO/SQUAD 모집</a></li>
 				</ul>
