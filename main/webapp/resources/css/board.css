@@ -7,7 +7,7 @@
 
 .swiper-slide {
   text-align: center;
-  font-size: 1.0588235294117647rem;
+  font-size: 18px;
   background: #fff;
 
   /* Center slide text vertically */
@@ -44,7 +44,7 @@
 h3 {
     padding-top: 50px;
     margin-bottom: 8px;
-    font-size: 2.6470588235294117rem;
+    font-size: 45px;
     font-weight: normal;
 }
 
@@ -84,27 +84,9 @@ h3 {
 	background : #e6e5e5;
 }
 
-/* 아이콘 부분!!!!!  */
+/* N 아이콘  */
 .xi-naver-square {
 	color : #e58300;
-}
-.ico_board_tier{
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
-}
-.ico_board_tier.silver {
-    background-position: -30px -60px;
-}
-.ico_board_tier.gold {
-    background-position: right -90px;
-}
-.ico_board_tier.platinum {
-    background-position: right -120px;
-}
-.ico_board_tier.bronze {
-    background-position: -30px -30px;
 }
 
 /* 게시판 목록 table */
@@ -118,7 +100,7 @@ h3 {
 
 .table_tit th {
 	padding: 25px 0;
-	font-size: 0.9411764705882353rem;
+	font-size:16px;
 	font-weight: normal;
 	color: #ffffff;
 	background-color: #252525;
@@ -158,7 +140,7 @@ h3 {
 	background-color: #f19a09;
 	border: 0;
 	color: #fff;
-    font-size: 0.8823529411764706rem;
+    font-size: 15px;
     cursor: pointer;
 }
 

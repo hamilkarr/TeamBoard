@@ -45,7 +45,7 @@ public class Board extends Dto<Board> {
 			
 			String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			if (regDt.indexOf(today) == -1) { // 오늘 이전 날짜 -> 날짜  
-				regDtSt = new SimpleDateFormat("yyyy.MM.dd").format(date); 
+				regDtSt = new SimpleDateFormat("yy.MM.dd").format(date); 
 			} else { // 오늘 -> 시간 표기 
 				regDtSt = new SimpleDateFormat("HH:mm").format(date);
 			}
