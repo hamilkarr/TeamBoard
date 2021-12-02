@@ -60,7 +60,7 @@
             	</span>
             	</c:if>
             	<c:if test="${item.isNew}">
-            		N
+            		<i class='xi-naver-square'></i>
             	</c:if>
             </a>
           </td>
@@ -79,13 +79,6 @@
       </c:forEach>
     </tbody>
   </table>
-	<div>
-		아이콘 모음<i class='xi-naver-square'></i>
-		<span class="ico_board_tier silver"></span>
-		<span class="ico_board_tier gold"></span>
-		<span class="ico_board_tier platinum"></span>
-		<span class="ico_board_tier bronze"></span>
-		</div>
   <div id="board_bttom">
     <%=pagingHtml%>
     <button class="write_btn" onclick="location.href='write'">글쓰기</button>
