@@ -95,16 +95,16 @@ h3 {
 	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
 }
 .ico_board_tier.silver {
-    background-position: -30px -60px;
+    background-position:right -60px;
 }
 .ico_board_tier.gold {
-    background-position: right -90px;
+    background-position:right -90px;
 }
 .ico_board_tier.platinum {
-    background-position: right -120px;
+    background-position:right -120px;
 }
-.ico_board_tier.bronze {
-    background-position: -30px -30px;
+.ico_board_tier.master{
+    background-position:left bottom;
 }
 
 /* 게시판 목록 table */

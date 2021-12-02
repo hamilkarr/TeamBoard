@@ -23,7 +23,7 @@
 				<option value="">전체</option>
 				<option value="normal" <c:if test="${board.status == 'normal'}"> selected</c:if>>일반</option>
 				<option value="tip" <c:if test="${board.status == 'tip'}"> selected</c:if>>팁과 정보</option>
-				<c:if test="${member.memId == 'administartor'}">
+				<c:if test="${member.memLv == 'admin'}">
 					<option value="notice" <c:if test ="${board.status == 'notice'}">selected</c:if>>공지사항</option>
 					<input type="hidden" name="isNotice" value=1 />
 				</c:if>
