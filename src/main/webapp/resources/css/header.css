@@ -18,7 +18,7 @@ header {
 	text-align: center;
 	font-size: 0.8rem;
 	color: #f9930e;
-	line-height: 34px;
+	font-weight: bold;
 	
 }
 
@@ -34,10 +34,13 @@ header {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	max-width: 70px;
-	margin: 0 4px 0 6px;
-	text-decoration: underline;
-	font-weight: 500;
+	width: 70px;
+	margin: 0 3px 0 6px;
+	border-bottom: 1px solid black;
+}
+
+.logout {
+	padding-top: 4px;
 }
 
 .islogin .xi-user-o {
@@ -47,7 +50,7 @@ header {
 }
 
 .islogin span {
-	font-weight: 700;
+	vertical-align: middle;
 }
 
 .islogin:hover {

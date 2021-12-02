@@ -17,7 +17,7 @@
 		<c:choose>
 			<c:when test="${isLogin}">
 				<%-- <div class="profile">안녕하세요! <a href="${rootURL}/member/info">qwerasdfzx(아이디)</a>님</div> --%>
-				<div class="profile">안녕하세요! <a href="${rootURL}/member/info"><c:out value="${member.memId}" /></a>님</div>
+				<div class="profile">안녕하세요! <a href="${rootURL}/member/info"> (<c:out value="${member.memId}" />)</a>님</div>
 				<a class="islogin logout" href="${rootURL}/member/logout">
 					<span>로그아웃</span>
 				</a>
@@ -139,3 +139,5 @@
 	<div class="swiper-pagination"></div>
 </div>
 <!-- 배너E -->
+
+
