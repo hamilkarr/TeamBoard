@@ -5,7 +5,7 @@
 		"Driver": "com.mysql.cj.jdbc.Driver",
 		"Url" : "jdbc:mysql://localhost:3306/teamboard",
 		"user" : "root", 
-		"password" : "as121212"
+		"password" : "aA!12345"
 	},
 	"LogDir" : "C:\\logs",
 	"css": {
