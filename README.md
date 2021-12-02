@@ -3,7 +3,7 @@
 
 ## Update (12-02)
 list.jsp
- - N 대신 <i class> 추가
+ - N 대신 아이콘 추가
  - 아이콘 모음 제거
  
 board.css
