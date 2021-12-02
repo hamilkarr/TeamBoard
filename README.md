@@ -8,8 +8,10 @@ list.jsp
  
 board.css
  - 아이콘 부분 수정
+ - font-size px > rem으로 변경
 
  readme... 틀 작성중...
+ 
  
 ## Update (11-28)
 ![image](https://user-images.githubusercontent.com/84768566/143769221-d78d71d1-c957-4da2-bfcc-b36e4c8fe8a2.png)
