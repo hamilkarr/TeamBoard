@@ -1,6 +1,16 @@
 # TeamBoard
 팀 포트폴리오 게시판 제작 저장소
 
+## Update2 (12-02) 프론트팀 취합 이후 수정함
+# 전체 디벨롭 이후에 수정할 부분!!
+list.jsp
+ - line 26~32  : 검색결과 박스
+ - line 98~106 : 검색창
+
+board.css
+ - line 36~~ 전체 복사
+
+
 ## Update (12-02)
 list.jsp
  - N 대신 아이콘 추가
