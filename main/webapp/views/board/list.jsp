@@ -9,9 +9,13 @@
   <h3>게시판 목록</h3>
   <div class="bord_tit">
     <ul class="tit_list">
-      <li><a href="#">전체</a></li>
-      <li class="tit_link"><a href="#">일반</a></li>
-      <li class="tit_link"><a href="#">팁과 정보</a></li>
+      <li><a href="${rootURL}/board/list">전체</a></li>
+      <li class="tit_link">
+      	<a href="${rootURL}/board/list?status=normal">일반</a>
+      </li>
+      <li class="tit_link">
+      	<a href="${rootURL}/board/list?status=tip">팁과 정보</a>
+      </li>
     </ul>
   </div>
   <table class="board_table">
@@ -56,7 +60,7 @@
             	</span>
             	</c:if>
             	<c:if test="${item.isNew}">
-            		<i class='xi-naver-square'></i>
+            		N
             	</c:if>
             </a>
           </td>
@@ -75,6 +79,13 @@
       </c:forEach>
     </tbody>
   </table>
+	<div>
+		아이콘 모음<i class='xi-naver-square'></i>
+		<span class="ico_board_tier silver"></span>
+		<span class="ico_board_tier gold"></span>
+		<span class="ico_board_tier platinum"></span>
+		<span class="ico_board_tier bronze"></span>
+		</div>
   <div id="board_bttom">
     <%=pagingHtml%>
     <button class="write_btn" onclick="location.href='write'">글쓰기</button>
