@@ -40,18 +40,21 @@
                         <span class="ico_board_tier silver"></span>
                         <div><c:out value="${item.memId}" /></div> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
                     </div>
-                    <div class="date_cmt">${item.regDt}</div> <!-- dto -->
                 </div>
                 <span class="border_cmt"></span>
                 <div class="right_cmt">
-                    ${fn:replace(item.content, newline, '<br>')}
+                    <div class="text_cmt">
+                        ${fn:replace(item.content, newline, '<br>')}
+                    </div>
+                    <div class="btns_cmt">
+                        <div class="date_cmt">${item.regDt}</div> <!-- dto -->
+                        <c:if test="${item.memId == member.memId}">
+                            <a class="del_cmt" href='../board/delete_comment?commentNm=${item.commentNm}' onclick="return confirm('정말 삭제하시겠습니까?');" target="ifrmHidden">삭제</a>
+                            <button type="button" class="edit_comment" data-commentnm='${item.commentNm}'>수정</button>
+                            <!-- data-comment-nm 에서 data-commentNm으로 수정 -->
+                        </c:if>
+                    </div>
                 </div>
-                <c:if test="${item.memId == member.memId}">
-                	<a href='../board/delete_comment?commentNm=${item.commentNm}' onclick="return confirm('정말 삭제하시겠습니까?');" target="ifrmHidden">삭제</a>
-                	<button type="button" class="edit_comment" data-commentnm='${item.commentNm}'>수정</button>
-                	<!-- data-comment-nm 에서 data-commentNm으로 수정 -->
-                </c:if>
             </div>
             </c:forEach>
-            <!-- 댓글 페이징 들어갈 자리-->
         </div>

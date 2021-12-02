@@ -40,7 +40,7 @@
             <a href="../board/list" class="btn_list"><i class="xi-bars xi-x"></i></a>
             <c:choose>
                 <c:when test="${isLogin && member.memId == view.memId}"> <!-- 본인 글일때 -->
-                	<a class="btn_write" href="delete?postNm=${view.postNm}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</a>
+                	<a class="btn_write del_cnt" href="delete?postNm=${view.postNm}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</a>
                     <a class="btn_write" href="edit?postNm=${view.postNm}">수정하기</a>
                 </c:when>	
                 <c:otherwise>
