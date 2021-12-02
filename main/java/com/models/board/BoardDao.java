@@ -2,7 +2,7 @@ package com.models.board;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,6 +56,7 @@ public class BoardDao {
 		return rs;
 	}
 
+	/*
 	public int getTotal() {
 		int total = 0;
 
@@ -74,6 +75,46 @@ public class BoardDao {
 
 		return total;
 	}
+	*/
+	
+	public int getTotal() {
+		HttpServletRequest request = Req.get();
+		
+		String[] fields = null;
+		ArrayList<DBField> bindings = new ArrayList<>();
+		StringBuilder sb = new StringBuilder();
+		if (request.getParameter("status") != null) {
+			sb.append("status");
+			bindings.add(DB.setBinding("String", request.getParameter("status")));
+		}
+		
+		String sopt = request.getParameter("sopt");
+		String skey = request.getParameter("skey");
+		if (sopt != null && skey != null && !skey.trim().equals("")) {
+			String field = null;
+			switch(sopt) {
+				case "postTitle_content":
+					field = "CONCAT(postTitle,content)";
+					break;
+				default : 
+					field = sopt;
+			}
+			
+			field += " LIKE";
+			if (sb.length() > 0) sb.append("/");
+			sb.append(field);
+			skey = "%" + skey + "%";
+			bindings.add(DB.setBinding("String", skey));
+		}
+		
+		if (sb.length() > 0) {
+			fields = sb.toString().split("/");
+			
+		}
+		int total = DB.getCount("board", fields, bindings);
+		System.out.println("total : " + total);
+		return total;
+	}	
 
 	public ArrayList<Board> getList(int page, int limit) {
 		page = (page <= 0) ? 1 : page;
@@ -84,14 +125,45 @@ public class BoardDao {
 		ArrayList<DBField> bindings = new ArrayList<>();
 		
 		HttpServletRequest request = Req.get();
-		StringBuilder sb = new StringBuilder();
 		
-		// "SELECT * FROM board WHERE isNotic = 1 UNION ALL"
-		sb.append("SELECT * FROM board WHERE isNotice = 1 UNION SELECT * FROM board");
+		/** 검색 조건 처리 S */
+		ArrayList<String> arrWhere = new ArrayList<>();
 		if (request.getParameter("status") != null) {
-			sb.append(" WHERE status = ?");
+			arrWhere.add(" status = ? ");
 			bindings.add(DB.setBinding("String", request.getParameter("status")));
 		}
+		
+		String sopt = request.getParameter("sopt");
+		String skey = request.getParameter("skey");
+		if (sopt != null && skey != null && !skey.trim().equals("")) {
+			String field = null;
+			switch(sopt) {
+				case "postTitle_content":
+					field = "CONCAT(postTitle,content)";
+					break;
+				default : 
+					field = sopt;
+			}
+			arrWhere.add(field + " LIKE ?");
+			skey = "%" + skey + "%";
+			bindings.add(DB.setBinding("String", skey));
+		}
+		
+		/** 검색 조건 처리 E */
+		
+		StringBuilder sb = new StringBuilder();		
+		sb.append("SELECT * FROM board WHERE isNotice = 1 UNION SELECT * FROM board");
+		
+		if (arrWhere.size() > 0) {
+			sb.append(" WHERE ");
+			boolean isFirst = true;
+			for(String addWhere : arrWhere) {
+				if (!isFirst) sb.append(" AND ");
+				sb.append(addWhere);
+				isFirst = false;
+			}
+		}
+		
 		sb.append(" ORDER BY isNotice DESC, regDt DESC LIMIT ?,?");
 		String sql = sb.toString();
 		
@@ -101,7 +173,7 @@ public class BoardDao {
 		ArrayList<Board> list = DB.executeQuery(sql, bindings, new Board());
 		
 		return list;
-	}
+	}	
 
 	public ArrayList<Board> getList(int page) {
 		return getList(page, 15);
@@ -140,6 +212,8 @@ public class BoardDao {
 		}
 		return get(postNm);
 	}
+	
+	
 
 	public boolean edit(HttpServletRequest request) throws Exception {
 

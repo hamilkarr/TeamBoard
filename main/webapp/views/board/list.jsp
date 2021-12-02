@@ -1,12 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%
- 	String pagingHtml = (String)request.getAttribute("pagingHtml");
- %>
+<%
+String pagingHtml = (String)request.getAttribute("pagingHtml");
+String skey= request.getParameter("skey");
+String sopt = request.getParameter("sopt");
+//String total = (String)request.getAttribute("total");
+%>
+<c:set var="skey" value="<%=skey%>" />
+ 
 <!-- 게시판 목록S -->
 <div class="inner_box">
-  <h3>게시판 목록</h3>
+  <h3>플레이어 게시판</h3>
   <div class="bord_tit">
     <ul class="tit_list">
       <li><a href="${rootURL}/board/list">전체</a></li>
@@ -18,6 +23,13 @@
       </li>
     </ul>
   </div>
+<!-- 검색 결과 박스. 평소에는 숨김 -->	
+  <c:if test="${skey != null}" > 
+	  <div class="search_resultBox">
+	  	"<em class="sw"><%=skey%></em>" 에 대한 <em class="sw">${total}</em>개의 게시글이 검색되었습니다. &nbsp
+	  	<a href="../board/list" class="link_back">돌아가기</a>
+	  </div>
+  </c:if>
   <table class="board_table">
     <thead>
       <tr class="table_tit">
@@ -82,6 +94,16 @@
   <div id="board_bttom">
     <%=pagingHtml%>
     <button class="write_btn" onclick="location.href='write'">글쓰기</button>
-  </div>
+    <!-- 검색 박스 -->
+    <form name="searchForm" method="get" action="?" class=wrap_search >
+    	<select name="sopt" class="search">    	
+    		<option value="postTitle"${sopt.equals("postTitle")?" selected":""}>제목 </option>
+    		<option value="postTitle_content"${sopt.equals("postTitle_content")?" selected":""}>제목 + 본문</option>
+    		<option value="memId"${sopt.equals("memId")?" selected":""}>작성자</option>
+    	</select>
+    	<input type="text" name="skey" class="search_box" value='${skey}' />
+    	<button type="submit" class="search_btn"><i class="xi-search"></i></button>
+    </form>
+  </div>  
 </div>
 <!-- 게시판 목록E -->
