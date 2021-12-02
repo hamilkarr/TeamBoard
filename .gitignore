@@ -70,6 +70,7 @@ local.properties
 .project
 .classpath
 /.settings/
+./config/
 
 # Compiled class file
 *.class

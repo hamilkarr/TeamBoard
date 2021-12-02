@@ -108,12 +108,12 @@ public class BoardController extends HttpServlet {
 			BoardDao dao = BoardDao.getInstance();
 			ArrayList<Board> list = dao.getList(request);
 
-			int total = dao.getTotal();
-			total = 10000;
-			Pagination pagination = new Pagination(request, total);
+			int total = dao.getTotal();			
+			Pagination pagination = new Pagination(request, 1000);
 			String pagingHtml = pagination.getPageHtml();
-
+			
 			request.setAttribute("list", list);
+			request.setAttribute("total", total);
 			request.setAttribute("pagingHtml", pagingHtml);
 		} catch (Exception e) {
 			out.printf("<script>alert('%s');history.back();</script>", e.getMessage());
