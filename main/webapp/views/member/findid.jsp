@@ -4,11 +4,9 @@
 <!-- 임시로 css 루트 적용 S -->
 <%
 	String memId = (String)request.getAttribute("memId");
-	String rootURL = (String)request.getAttribute("rootURL");
 %>
-<c:set var="rootURL" value="<%=rootURL%>" />
-<link href='<%=rootURL%>/resources/css/member.css' rel='stylesheet' style='text/css' />
-<!-- 임시로 css 루트 적용 E -->
+
+<link href='${rootURL}/resources/css/member.css' rel='stylesheet' style='text/css' />
 
 <c:set var="memId" value="<%=memId%>" />
 <main>
