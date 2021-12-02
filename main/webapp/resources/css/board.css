@@ -84,27 +84,9 @@ h3 {
 	background : #e6e5e5;
 }
 
-/* 아이콘 부분!!!!!  */
+/* N 아이콘  */
 .xi-naver-square {
 	color : #e58300;
-}
-.ico_board_tier{
-	display: inline-block;
-    width: 28px;
-    height: 28px;
-	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
-}
-.ico_board_tier.silver {
-    background-position: -30px -60px;
-}
-.ico_board_tier.gold {
-    background-position: right -90px;
-}
-.ico_board_tier.platinum {
-    background-position: right -120px;
-}
-.ico_board_tier.bronze {
-    background-position: -30px -30px;
 }
 
 /* 게시판 목록 table */
