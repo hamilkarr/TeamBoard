@@ -1,6 +1,16 @@
 # TeamBoard
 팀 포트폴리오 게시판 제작 저장소
 
+## Update (12-02)
+list.jsp
+ - N 대신 <i class> 추가
+ - 아이콘 모음 제거
+ 
+board.css
+ - 아이콘 부분 수정
+
+ readme... 틀 작성중...
+ 
 ## Update (11-28)
 ![image](https://user-images.githubusercontent.com/84768566/143769221-d78d71d1-c957-4da2-bfcc-b36e4c8fe8a2.png)
 
