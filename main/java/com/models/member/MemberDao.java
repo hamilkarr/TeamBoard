@@ -95,12 +95,16 @@ public class MemberDao {
 		 */
 		checkJoinData(request);
 		
+		/** 유저 등급 설정 */
+		String[] levels = {"silver", "gold", "platinum"};
+		int level = (int)Math.floor(Math.random()* 3);
+		
 		ArrayList<DBField> bindings = new ArrayList<>();
 		String sql = "INSERT INTO member (memId, memPw, memPwHint, memNm, memLv ,cellPhone, socialType, socialId) VALUES (?,?,?,?,?,?,?,?)";
 		String memPw = request.getParameter("memPw");
 		String hash = "";
 		String memPwHint = "";
-		String memLv = "silver";
+		String memLv = levels[level];
 		String socialType = "none";
 		String socialId = "";
 		if (socialMember == null) { // 일반회원 -> 비밀번호 해시

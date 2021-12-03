@@ -2,12 +2,11 @@ package com.models.board;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.core.*;
-import com.models.board.*;
 import com.models.file.*;
 import com.models.member.*;
 
@@ -31,88 +30,130 @@ public class BoardDao {
 		checkData(request);
 		
 		Member member = (Member)request.getAttribute("member");
+		String memId = member.getMemId();
+		String memLv = member.getMemLv();
+		String gid = request.getParameter("gid");
 		
-		int num = 0;
-		String sql = "INSERT INTO board (gid, status, postTitle, content, memId, isNotice) VALUES(?,?,?,?,?,?)";
-		try (Connection conn = DB.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-			request.setCharacterEncoding("UTF-8");
-			String gid = request.getParameter("gid");
-			String status = request.getParameter("status");
-			String postTitle = request.getParameter("postTitle");
-			String content = request.getParameter("content");
-			String memId = member.getMemId();
-			int isNotice = 0;
-			if (request.getParameter("isNotice") != null) {
-				isNotice = Integer.valueOf(request.getParameter("isNotice"));
-			}
-
-			pstmt.setLong(1, Long.valueOf(gid));
-			pstmt.setString(2, status);
-			pstmt.setString(3, postTitle);
-			pstmt.setString(4, content);
-			pstmt.setString(5, memId);
-			pstmt.setInt(6, isNotice);
-
-			int result = pstmt.executeUpdate();
-			if (result > 0) {
-				ResultSet rs = pstmt.getGeneratedKeys();
-				if (rs.next()) {
-					num = rs.getInt(1);
-				}
-				rs.close();
-				
-				FileDao.getInstance().updateFinish(gid);
-			}
-		} catch (IOException | SQLException | ClassNotFoundException e) {
-			Logger.log(e);
-		}
-
-		return num;
-	}
-
+		int isNotice = 0;
+		if (request.getParameter("isNotice") != null) {
+			isNotice = Integer.valueOf(request.getParameter("isNotice"));
+		}		
+		
+		String sql = "INSERT INTO board (gid, status, postTitle, content, memId, isNotice, memLv) VALUES(?,?,?,?,?,?,?)";
+		ArrayList<DBField> bindings = new ArrayList<>();
+		
+		bindings.add(DB.setBinding("Long", gid));
+		bindings.add(DB.setBinding("String", request.getParameter("status")));
+		bindings.add(DB.setBinding("String", request.getParameter("postTitle")));
+		bindings.add(DB.setBinding("String", request.getParameter("content")));
+		bindings.add(DB.setBinding("String", memId));
+		bindings.add(DB.setBinding("Integer", String.valueOf(isNotice)));
+		bindings.add(DB.setBinding("String", memLv));
+		
+		int rs = DB.executeUpdate(sql, bindings, true);
+		
+		FileDao.getInstance().updateFinish(gid);
+		
+		return rs;
+	}	
+	
 	public int getTotal() {
-		int total = 0;
-
-		String sql = "SELECT COUNT(*) cnt from board";
-		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				total = rs.getInt("cnt");
-			}
-
-			rs.close();
-
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
+		HttpServletRequest request = Req.get();
+		
+		String[] fields = null;
+		ArrayList<DBField> bindings = new ArrayList<>();
+		StringBuilder sb = new StringBuilder();
+		if (request.getParameter("status") != null) {
+			sb.append("status");
+			bindings.add(DB.setBinding("String", request.getParameter("status")));
 		}
-
+		
+		String sopt = request.getParameter("sopt");
+		String skey = request.getParameter("skey");
+		if (sopt != null && skey != null && !skey.trim().equals("")) {
+			String field = null;
+			switch(sopt) {
+				case "postTitle_content":
+					field = "CONCAT(postTitle,content)";
+					break;
+				default : 
+					field = sopt;
+			}
+			
+			field += " LIKE";
+			if (sb.length() > 0) sb.append("/");
+			sb.append(field);
+			skey = "%" + skey + "%";
+			bindings.add(DB.setBinding("String", skey));
+		}
+		
+		if (sb.length() > 0) {
+			fields = sb.toString().split("/");
+			
+		}
+		int total = DB.getCount("board", fields, bindings);
+		System.out.println("total : " + total);
 		return total;
-	}
+	}	
 
 	public ArrayList<Board> getList(int page, int limit) {
-		ArrayList<Board> list = new ArrayList<Board>();
 		page = (page <= 0) ? 1 : page;
 		limit = (limit <= 0) ? 15 : limit;
 
-		int offset = (page - 1) * limit;
-		// System.out.println(offset + " : " + limit);
-		String sql = "SELECT * FROM board ORDER BY isNotice DESC, regDt DESC LIMIT ?,?";
-		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-
-			pstmt.setInt(1, offset);
-			pstmt.setInt(2, limit);
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				list.add(new Board(rs));
-			}
-			rs.close();
-
-		} catch (SQLException | ClassNotFoundException e) {
-			Logger.log(e);
+		int offset = (page - 1) * limit;		
+		
+		ArrayList<DBField> bindings = new ArrayList<>();
+		
+		HttpServletRequest request = Req.get();
+		
+		/** 검색 조건 처리 S */
+		ArrayList<String> arrWhere = new ArrayList<>();
+		if (request.getParameter("status") != null) {
+			arrWhere.add(" status = ? ");
+			bindings.add(DB.setBinding("String", request.getParameter("status")));
 		}
+		
+		String sopt = request.getParameter("sopt");
+		String skey = request.getParameter("skey");
+		if (sopt != null && skey != null && !skey.trim().equals("")) {
+			String field = null;
+			switch(sopt) {
+				case "postTitle_content":
+					field = "CONCAT(postTitle,content)";
+					break;
+				default : 
+					field = sopt;
+			}
+			arrWhere.add(field + " LIKE ?");
+			skey = "%" + skey + "%";
+			bindings.add(DB.setBinding("String", skey));
+		}
+		
+		/** 검색 조건 처리 E */
+		
+		StringBuilder sb = new StringBuilder();		
+		sb.append("SELECT * FROM board WHERE isNotice = 1 UNION SELECT * FROM board");
+		
+		if (arrWhere.size() > 0) {
+			sb.append(" WHERE ");
+			boolean isFirst = true;
+			for(String addWhere : arrWhere) {
+				if (!isFirst) sb.append(" AND ");
+				sb.append(addWhere);
+				isFirst = false;
+			}
+		}
+		
+		sb.append(" ORDER BY isNotice DESC, regDt DESC LIMIT ?,?");
+		String sql = sb.toString();
+		
+		bindings.add(DB.setBinding("Integer", String.valueOf(offset)));
+		bindings.add(DB.setBinding("Integer", String.valueOf(limit)));
+		
+		ArrayList<Board> list = DB.executeQuery(sql, bindings, new Board());
+		
 		return list;
-	}
+	}	
 
 	public ArrayList<Board> getList(int page) {
 		return getList(page, 15);
@@ -151,16 +192,29 @@ public class BoardDao {
 		}
 		return get(postNm);
 	}
+	
+	
 
 	public boolean edit(HttpServletRequest request) throws Exception {
-
+		int postNm = Integer.parseInt(request.getParameter("postNm").trim());
+		
+		/** 로그인 여부확인  */
+		if (!MemberDao.isLogin(request)) {
+			throw new Exception("로그인 후 삭제가 가능합니다."); 
+		}
+		
+		/** 게시글 존재 여부확인 */
+		Board board = get(postNm);
+		if (board == null) {
+			throw new Exception("존재하지 않는 게시글 입니다.");
+		}
+		
 		/** 유효성 검사 **/
 		checkData(request);
 
 		String sql = "UPDATE board SET postTitle=?, status =?, content=?, isNotice = ? WHERE postNm=?";
 		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			request.setCharacterEncoding("UTF-8");
-			int postNm = Integer.parseInt(request.getParameter("postNm").trim());
 			int isNotice = 0;
 			if (request.getParameter("isNotice") != null) {
 				isNotice = Integer.valueOf(request.getParameter("isNotice"));
@@ -201,8 +255,10 @@ public class BoardDao {
 		}
 		
 		Member member = (Member)request.getAttribute("member");
-		if (!member.getMemId().equals(board.getMemId())) {
-			throw new Exception("본인이 작성한 게시글만 삭제할 수 있습니다.");
+		if(!member.getMemLv().equals("admin")){
+			 if(!member.getMemId().equals(board.getMemId())){
+				throw new Exception("본인이 작성한 게시글만 삭제 할 수 있습니다.");
+			}
 		}
 		
 		String sql = "DELETE FROM board WHERE postNm=?";

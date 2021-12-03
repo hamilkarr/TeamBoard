@@ -12,10 +12,11 @@ public class Comment extends Dto<Comment> {
 	private String memId; // 댓글 작성 회원 아이디
 	private String content; // 댓글 내용
 	private String regDt; // 댓글 작성일시
+	private String memLv;
 
 	public Comment() {}
 
-	public Comment(int commentNm, int postNm, String memId, String content, String regDt) {
+	public Comment(int commentNm, int postNm, String memId, String content, String regDt, String memLv) {
 
 		this.commentNm = commentNm;
 		this.postNm = postNm;
@@ -23,13 +24,13 @@ public class Comment extends Dto<Comment> {
 		this.content = content;
 		
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-			SimpleDateFormat df = new SimpleDateFormat("yy.MM.dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat df = new SimpleDateFormat("yyyy.MM.dd");
 			SimpleDateFormat tf = new SimpleDateFormat("HH:mm");
 			
 			java.util.Date date = sdf.parse(regDt);
 			
-			String todayStr = new SimpleDateFormat("YYYY-MM-dd").format(new java.util.Date()).toString();
+			String todayStr = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()).toString();
 			if (regDt.indexOf(todayStr) != -1) { // 오늘 작성된 게시글 
 				regDt = tf.format(date).toString();
 			} else {
@@ -37,6 +38,7 @@ public class Comment extends Dto<Comment> {
 			}
 		} catch (ParseException e) {}
 		this.regDt = regDt;
+		this.memLv = memLv;
 	}
 	
 	public Comment(ResultSet rs) throws SQLException {
@@ -45,7 +47,8 @@ public class Comment extends Dto<Comment> {
 			rs.getInt("postNm"),
 			rs.getString("memId"),
 			rs.getString("content"),
-			rs.getString("regDt")
+			rs.getString("regDt"),
+			rs.getString("memLv")
 		);
 	}
 
@@ -80,6 +83,14 @@ public class Comment extends Dto<Comment> {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String getMemLv() {
+		return memLv;
+	}
+
+	public void setMemLv(String memLv) {
+		this.memLv = memLv;
+	}
 
 	public String getRegDt() {
 		return regDt;
@@ -93,7 +104,4 @@ public class Comment extends Dto<Comment> {
 	public Comment setResultSet(ResultSet rs) throws SQLException {
 		return new Comment(rs);
 	}
-
-	
-
 }

@@ -24,15 +24,19 @@ DROP TABLE IF EXISTS `board`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
   `postNm` int NOT NULL AUTO_INCREMENT,
-  `status` enum('normal','tip') DEFAULT 'normal',
+  `gid` bigint DEFAULT NULL,
+  `status` enum('normal','tip','notice') DEFAULT 'normal',
   `postTitle` varchar(65) NOT NULL,
   `content` text NOT NULL,
   `memId` varchar(30) NOT NULL,
-  `regDt` datetime DEFAULT CURRENT_TIMESTAMP,
   `isNotice` tinyint(1) DEFAULT '0' COMMENT '공지사항 여부 - 0 - 일반 게시글, 1 - 공지사항',
+  `viewCnt` int unsigned DEFAULT '0',
+  `commentCnt` int unsigned DEFAULT '0',
+  `regDt` datetime DEFAULT CURRENT_TIMESTAMP,
+  `memLv` enum('silver','gold','platinum','admin') NOT NULL DEFAULT 'silver',
   PRIMARY KEY (`postNm`),
   KEY `ix_isNotice` (`isNotice` DESC,`regDt` DESC)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +45,7 @@ CREATE TABLE `board` (
 
 LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT INTO `board` VALUES (1,'normal','2','4','hamilkarr','2021-11-24 23:12:16',1),(2,'tip','5','5','hamilkarr','2021-11-24 23:12:29',0),(3,'normal','2444','555','hamilkarr','2021-11-25 18:18:36',0),(4,'normal','4','44','','2021-11-25 23:53:15',0),(5,'tip','5','55','','2021-11-25 23:53:26',0),(6,'tip','6','66','hamilkarr','2021-11-25 23:53:46',0),(7,'normal','7','77','hamilkarr','2021-11-25 23:53:58',0),(8,'normal','2','2','hamilkarr','2021-11-25 23:56:30',0),(9,'normal','4','4','hamilkarr','2021-11-25 23:56:37',0),(10,NULL,'444','555','test1234','2021-11-27 21:36:41',0),(11,NULL,'222','555','test1234','2021-11-27 21:36:57',0),(12,NULL,'t666','333','test1234','2021-11-27 21:37:04',0),(13,NULL,'222','555','test1234','2021-11-27 21:37:39',0),(14,NULL,'4','4','hamilkarr','2021-11-27 22:30:24',0),(15,NULL,'5','5','hamilkarr','2021-11-27 22:30:32',0),(16,NULL,'7','7','hamilkarr','2021-11-27 22:30:50',0),(17,NULL,'99','9','hamilkarr','2021-11-27 22:31:37',0),(18,NULL,'44','555','hamilkarr','2021-11-28 00:16:40',1),(19,NULL,'공지사항 일껄요','하하','hamilkarr','2021-11-28 00:16:56',1),(20,NULL,'44','555','hamilkarr','2021-11-28 13:34:05',0);
+INSERT INTO `board` VALUES (34,1638417824389,'notice','공지사항','<p>뀨</p>\r\n\r\n<p><img src=\"/Test/resources/upload/3\" /></p>\r\n','admin123',1,0,0,'2021-12-02 13:04:00','admin'),(35,1638417843228,'normal','(수정)공지사항2','<p>뀨뀨</p>\r\n','admin123',1,0,6,'2021-12-02 13:04:12','admin'),(36,1638417868473,'normal','글','<p>내용</p>\r\n','abc123456',0,0,0,'2021-12-02 13:04:35','gold'),(37,1638418365517,'normal','글','<p>내용</p>\r\n','test123456',0,0,0,'2021-12-02 13:12:57','gold'),(38,1638427072565,'normal','글','<p>내용</p>\r\n\r\n<p>&nbsp;</p>\r\n','qwe123456',0,0,0,'2021-12-02 15:37:57','silver'),(39,1638427085893,'tip','글','<p>내용</p>\r\n','asd123456',0,0,1,'2021-12-02 15:38:13','platinum');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,10 +62,11 @@ CREATE TABLE `boardcomment` (
   `memId` varchar(45) NOT NULL,
   `content` text NOT NULL,
   `regDt` datetime DEFAULT CURRENT_TIMESTAMP,
+  `memLv` enum('silver','gold','platinum','admin') NOT NULL DEFAULT 'silver',
   PRIMARY KEY (`commentNm`),
-  KEY `postNm_idx` (`postNm`),
+  KEY `postNm_idx` (`postNm`) /*!80000 INVISIBLE */,
   CONSTRAINT `postNm` FOREIGN KEY (`postNm`) REFERENCES `board` (`postNm`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +75,7 @@ CREATE TABLE `boardcomment` (
 
 LOCK TABLES `boardcomment` WRITE;
 /*!40000 ALTER TABLE `boardcomment` DISABLE KEYS */;
+INSERT INTO `boardcomment` VALUES (3,35,'admin123','ㄹㅇㅋㅋ','2021-12-02 15:59:01','silver'),(4,35,'qwe123456','ㄹㅇㅋㅋ','2021-12-02 16:49:30','silver'),(5,35,'admin123','ㄹㅇㅋㅋ','2021-12-02 16:49:51','silver'),(7,39,'test123456','ㄹㅇㅋㅋ','2021-12-02 17:30:52','silver'),(8,35,'admin123','fdzz\r\n','2021-12-02 18:15:55','admin'),(9,35,'qwe123456','ㅎ2','2021-12-02 18:28:31','silver'),(10,35,'asd123456','g2','2021-12-02 18:28:46','platinum');
 /*!40000 ALTER TABLE `boardcomment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +95,7 @@ CREATE TABLE `fileinfo` (
   `regDt` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idx`),
   KEY `ix_gid_regDt` (`gid`,`regDt`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +104,7 @@ CREATE TABLE `fileinfo` (
 
 LOCK TABLES `fileinfo` WRITE;
 /*!40000 ALTER TABLE `fileinfo` DISABLE KEYS */;
+INSERT INTO `fileinfo` VALUES (3,1638417824389,'풍경.jpg','image/jpeg',1,'2021-12-02 13:03:59');
 /*!40000 ALTER TABLE `fileinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +129,7 @@ CREATE TABLE `member` (
   `modDt` datetime DEFAULT NULL,
   PRIMARY KEY (`memNo`),
   UNIQUE KEY `memId` (`memId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +138,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'hamilkarr','','','준영','admin','01033334444','kakao','1996108180','2021-11-24 20:31:07',NULL),(2,'test1234','$2a$10$pvQyIhScZV/zDO187emogeWJegRCy8aFAJ8grYmwvTv22C49QH1Ri','hint','test1234','silver','01022223333','none','','2021-11-24 22:55:20',NULL),(3,'test3456','$2a$10$0xmaqMVLVOhKRMv96dKvVemZV5YRHg6n.jMwGJREL7if7pRlzvq0m','hint','tester','silver','01055556666','none','','2021-11-28 16:10:38',NULL);
+INSERT INTO `member` VALUES (1,'test123456','$2a$10$iF5tH.vBVJhfF76V49NVk.MC5IEQVvodj5V//JhBOcmKzEtyT/z1S','a@123456','실험체1','gold','','none','','2021-12-02 12:52:59',NULL),(2,'abc123456','$2a$10$U8vJeW3eTUap1FMSYXexr.ORVx9dfqHPfq4EtVQ0tJEKtPFYwRYrK','a@123456','실험체2','gold','','none','','2021-12-02 12:53:12',NULL),(3,'def123456','$2a$10$g8QRWZEBQlMFEYalJtbO4OxASv5F8bhGk4V36ihEmu51gtAGd6jIe','a@123456','실험체3','platinum','','none','','2021-12-02 12:53:37',NULL),(4,'qwe123456','$2a$10$SEbSWXYSMz/K1Fe8LojvvOuyvKsBUuGPYpydVJzsaO.ScJTwkjhl6','a@123456','실험체4','silver','','none','','2021-12-02 12:53:57',NULL),(5,'asd123456','$2a$10$CPr4osgJdlu5o1H8GdfgZueM9fWj0P/8zFgTlF4Op14KeV5xa8Yq6','a@123456','실험체5','platinum','','none','','2021-12-02 12:54:09',NULL),(6,'admin123','$2a$10$2RIwgCS3fnsDrMpq2v8lDus5fHjQlClLdUtGS4P5/DS.eViNgeFUW','a@123456','관리자','admin','','none','','2021-12-02 13:01:28',NULL),(7,'zxc123456','$2a$10$CzwRVoU2CPblp4hFZKrE9eX5.9ROCV0fUGS6xZU13pX7X1GqysIZC','a@123456','실험체6','silver','','none','','2021-12-02 14:13:22',NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -144,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-29 21:11:25
+-- Dump completed on 2021-12-02 18:33:32

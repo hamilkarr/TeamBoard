@@ -19,10 +19,11 @@ public class Board extends Dto<Board> {
 	private int commentCnt;
 	private int viewCnt;
 	private boolean isNew;
+	private String memLv;
 	
 	public Board() {}
 
-	public Board(int postNm, long gid, String status, String postTitle, String content, String memId, String regDt, int isNotice, int commentCnt, int viewCnt) {
+	public Board(int postNm, long gid, String status, String postTitle, String content, String memId, String regDt, int isNotice, int commentCnt, int viewCnt, String memLv) {
 		this.postNm = postNm;
 		this.gid = gid;
 		this.status = status;
@@ -33,6 +34,7 @@ public class Board extends Dto<Board> {
 		this.commentCnt = commentCnt;
 		this.viewCnt = viewCnt;
 		this.regDt = regDt;
+		this.memLv = memLv;
 		
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -45,7 +47,7 @@ public class Board extends Dto<Board> {
 			
 			String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 			if (regDt.indexOf(today) == -1) { // 오늘 이전 날짜 -> 날짜  
-				regDtSt = new SimpleDateFormat("yy.MM.dd").format(date); 
+				regDtSt = new SimpleDateFormat("yyyy.MM.dd").format(date); 
 			} else { // 오늘 -> 시간 표기 
 				regDtSt = new SimpleDateFormat("HH:mm").format(date);
 			}
@@ -65,7 +67,8 @@ public class Board extends Dto<Board> {
 				rs.getString("regDt"),
 				rs.getInt("isNotice"),
 				rs.getInt("commentCnt"),
-				rs.getInt("viewCnt")
+				rs.getInt("viewCnt"),
+				rs.getString("memLv")
 		);
 	}
 	
@@ -155,6 +158,14 @@ public class Board extends Dto<Board> {
 
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
+	}
+	
+	public String getMemLv() {
+		return memLv;
+	}
+
+	public void setMemLv(String memLv) {
+		this.memLv = memLv;
 	}
 	
 	public boolean getIsNew() {
