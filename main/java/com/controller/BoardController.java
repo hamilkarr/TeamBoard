@@ -109,11 +109,11 @@ public class BoardController extends HttpServlet {
 			ArrayList<Board> list = dao.getList(request);
 
 			int total = dao.getTotal();
-			total = 10000;
-			Pagination pagination = new Pagination(request, total);
+			Pagination pagination = new Pagination(request, 1000);
 			String pagingHtml = pagination.getPageHtml();
 
 			request.setAttribute("list", list);
+			request.setAttribute("total", total);
 			request.setAttribute("pagingHtml", pagingHtml);
 		} catch (Exception e) {
 			out.printf("<script>alert('%s');history.back();</script>", e.getMessage());
@@ -124,9 +124,12 @@ public class BoardController extends HttpServlet {
 	}
 
 	private void editController(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		BoardDao dao = BoardDao.getInstance();
 		boolean Login = MemberDao.isLogin(req);
-		
+
+		int postNm = Integer.parseInt(req.getParameter("postNm"));
+		BoardDao dao = BoardDao.getInstance();
+		Board board = dao.get(postNm);
+
 		if (httpMethod.equals("POST")) {
 			try {
 				if (!Login) {
@@ -143,28 +146,26 @@ public class BoardController extends HttpServlet {
 			}
 		} else {
 			try {
-				if (Login != true) {
+				if (!Login) {
 					throw new Exception("회원만 이용하실수 있습니다.");
 				}
 
-				int postNm = Integer.parseInt(req.getParameter("postNm"));
-
-				if (req.getParameter("postNm") == null) {
-					throw new Exception("잘못된 접근입니다.");
+				/** 게시글 본인 여부확인 (관리자는 상관x) */
+				Member member = (Member) req.getAttribute("member");
+				if (!member.getMemLv().equals("admin")) {
+					System.out.println(member.getMemLv().equals("admin"));
+					if (!member.getMemId().equals(board.getMemId())) {
+						throw new Exception("본인이 작성한 게시글만 수정 할 수 있습니다.");
+					}
 				}
 
-				Board board = dao.get(postNm);
-				if (board == null) {
-					throw new Exception("게시글이 없습니다!");
-				}
-				
 				/** 첨부된 파일 목록 */
 				ArrayList<FileInfo> files = FileDao.getInstance().gets(board.getGid());
-				
+
 				req.setAttribute("mode", "edit");
 				req.setAttribute("board", board);
 				req.setAttribute("files", files);
-				
+
 				RequestDispatcher rd = req.getRequestDispatcher("/views/board/write.jsp");
 				rd.include(req, res);
 			} catch (Exception e) {
@@ -202,7 +203,7 @@ public class BoardController extends HttpServlet {
 			if (req.getParameter("postNm") == null) {
 				throw new Exception("잘못된 접근입니다.");
 			}
-			
+
 			/** 게시글 조회수 업데이트 */
 			dao.updateViewCnt(postNm);
 			Board view = dao.get(postNm);

@@ -38,11 +38,12 @@
                 <div class="left_cmt">
                     <div class="user_cmt">
                         <span class="ico_board_tier silver"></span>
-                        <div><c:out value="${item.memId}" /></div> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
+                        <span class="memid"><c:out value="${item.memId}" /></span> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
                     </div>
                 </div>
                 <span class="border_cmt"></span>
                 <div class="right_cmt">
+                    <div id="cmt_hidden">
                     <div class="text_cmt">
                         ${fn:replace(item.content, newline, '<br>')}
                     </div>
@@ -53,6 +54,7 @@
                             <button type="button" class="edit_comment" data-commentnm='${item.commentNm}'>수정</button>
                             <!-- data-comment-nm 에서 data-commentNm으로 수정 -->
                         </c:if>
+                    </div>
                     </div>
                 </div>
             </div>

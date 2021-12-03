@@ -10,8 +10,6 @@
 <c:set var="isLogin" value="<%=isLogin%>" />
 <c:set var="member" value="<%=member%>" />
 <header>
-	<!--로그인 전 로그인 버튼만 // 로그인 후, 안녕하세요! ooo님 
-		로그아웃// OOO님(hover 밑줄) 클릭하면 회원정보 수정페이지로 넘어감.-->
 	<div class="main_top">
 		<div class='inner layout_width'>
 		<c:choose>
@@ -26,20 +24,14 @@
 					<i class="xi-user-o"></i>
 					<span>로그인</span>
 				</a>
-				<!-- 로그인창에서 회원가입 -->
-				<!-- <a href="${rootURL}/member/join">회원가입</a> -->
 			</c:otherwise>
 		</c:choose>
 		</div>
 	</div>
-<!--com/models/kanban/kanban.java-->
-<!--show-bar htrml 구조 변경? 드롭다운 문제, 해결해야함.-->
-<!-- class='on' 클릭했을때, 링크이동할때 색변함 ??
-	-> 게시판 목록 전체 | 일반 | 팁과 정보 에 적용 하면 될듯-->
 	<nav>
-		<ul class='nav_list layout_width'>
-			<div class="inner-bar inner-bar-move"></div>
- 
+			<ul class='nav_list'>
+				<div class="inner-bar"></div>
+				<a class="main_logo" href="${rootURL}/board/list"><img src="https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/logo_pubg2-1.png" alt="logo"></a>
 			<li class='box'>
 				<a class="nav_over" href="${rootURL}/kanban/work">새소식</a>
 				<ul class="show-bar">
@@ -100,7 +92,7 @@
 				<li><a href="#">준비중</a></li>
 			</ul>
 		</li>
-		</ul>
+	</ul>
 	</nav>
 </header>
 <!-- 배너S -->
