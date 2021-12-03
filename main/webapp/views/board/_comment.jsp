@@ -11,7 +11,7 @@
             	<fmt:formatNumber value="${view.commentCnt}" />
             </span> <!-- 댓글 갯수 연동 -->
         </div>
-        <div class="byte_info"> <!-- form 태그 안에 넣어야하나? -->
+        <div class="byte_info"> 
             <span class="caret">0</span> <!-- 글자수 연동 -->
              <span>/ 600 bytes (한글 200자) | </span>
               <a href="">댓글 운영정책</a>
@@ -56,18 +56,23 @@
 					       </c:otherwise>
                     </c:choose>
                     </div>
-                    <div class="date_cmt">${item.regDt}</div> <!-- dto -->
                 </div>
                 <span class="border_cmt"></span>
-                <div class="right_cmt">
-                    ${fn:replace(item.content, newline, '<br>')}
+                 <div class="right_cmt">
+                    <div id="cmt_hidden">
+                    <div class="text_cmt">
+                        ${fn:replace(item.content, newline, '<br>')}
+                    </div>
+                    <div class="btns_cmt">
+                        <div class="date_cmt">${item.regDt}</div> <!-- dto -->
+                        <c:if test="${item.memId == member.memId}">
+                            <a class="del_cmt" href='../board/delete_comment?commentNm=${item.commentNm}' onclick="return confirm('정말 삭제하시겠습니까?');" target="ifrmHidden">삭제</a>
+                            <button type="button" class="edit_comment" data-commentnm='${item.commentNm}'>수정</button>
+                            <!-- data-comment-nm 에서 data-commentNm으로 수정 -->
+                        </c:if>
+                    </div>
+                    </div>
                 </div>
-                <c:if test="${item.memId == member.memId}">
-                	<a href='../board/delete_comment?commentNm=${item.commentNm}' onclick="return confirm('정말 삭제하시겠습니까?');" target="ifrmHidden">삭제</a>
-                	<button type="button" class="edit_comment" data-commentnm='${item.commentNm}'>수정</button>
-                	<!-- data-comment-nm 에서 data-commentNm으로 수정 -->
-                </c:if>
-            </div>
+                </div>
             </c:forEach>
-            <!-- 댓글 페이징 들어갈 자리-->
         </div>

@@ -48,6 +48,7 @@
 			</ul>
 		</div>
 			<br>
+			<br>
 		<a href="../board/list"  class = "btn_list">취소하기</a>
 	<c:choose>
 		<c:when test='${board == null}'>
