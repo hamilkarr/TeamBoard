@@ -59,7 +59,7 @@ nav {
 	background-color: black;
 	position: absolute;
 	z-index: 100;
-	width: 100vw;
+	width: 100%;
 }
 
 nav .nav_list .box {

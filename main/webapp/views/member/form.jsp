@@ -48,14 +48,17 @@ if (request.getAttribute("socialMember") != null) {
 		</div>
 		<form name='frmJoin' id='frmJoin' method="post" action="${action}" target="ifrmHidden" autocomplete="off">
 			<dl>
-				<dt class="cg_id">아이디</dt>
-				<dd class="cg_id">
+				<dt>아이디</dt>
+				<dd>
 					<c:choose>
 						<c:when test="${member == null}">
 							<input type="text" name="memId" value="${socialMember.memId}" placeholder="영문/숫자 조합 8~30자">
 						</c:when>
 						<c:otherwise>
-							<c:out value="${member.memId}" />
+						<a class="id_info">*아이디는 수정할 수 없습니다.</a>
+							<div class="cg_id">
+								<c:out value="${member.memId}" />
+							</div>
 						</c:otherwise>
 					</c:choose>
 				</dd>

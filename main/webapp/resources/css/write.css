@@ -50,7 +50,7 @@
 .file_box {
 	font-size: 0.8rem;
 	border: 1px solid  #dfdfdf;
-    width: calc(74%/2);
+    width: auto;
 	height: 26px;
 	padding: 2px 8px;
 	margin: 10px 0 0 130px;
@@ -81,7 +81,7 @@
 	font-size: 0.95rem;
 	color: #ffffff;
 	background-color: #000000;
-	margin:30px 0 0 770px;
+	margin:30px 0 0 880px;
 	float: left;
 	width: 150px;
     height: 50px;

@@ -84,9 +84,27 @@ h3 {
 	background : #e6e5e5;
 }
 
-/* 아이콘 N  */
+/* 아이콘 부분  */
 .xi-naver-square {
 	color : #e58300;
+}
+.ico_board_tier{
+	display: inline-block;
+    width: 28px;
+    height: 28px;
+	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
+}
+.ico_board_tier.silver {
+    background-position: -30px -60px;
+}
+.ico_board_tier.gold {
+    background-position: right -90px;
+}
+.ico_board_tier.platinum {
+    background-position: right -120px;
+}
+.ico_board_tier.bronze {
+    background-position: -30px -30px;
 }
 
 /* 게시판 목록 table */
@@ -166,4 +184,62 @@ li.page a{
 
 li.page a:hover{
 	background-color: #ddd;
+}
+
+/* 검색창 */
+form.wrap_search {
+    width: 540px;
+    padding-top: 80px;
+    margin: 0 auto;
+}
+
+select.search {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+    width: 178px;
+    height: 38px;
+    border: 1px solid #dfdfdf;
+}
+
+input.search_box {
+	width: 300px;
+    height: 38px;
+    padding: 6px 54px 6px 12px;
+    font-size: 16px;
+    line-height: 37px;
+    border: 1px solid #dfdfdf;
+}
+
+button.search_btn {
+    background: #fff;
+    border: 0;
+    font-size: 1.5rem;
+}
+
+i.xi-search {
+    position: relative;
+    top: 3px;
+    right: 40px;
+    color: #858283;
+}
+
+/* 검색했을때 나오는 결과창 */
+.search_resultBox {
+    padding: 21px 0 23px;
+    margin-bottom : 20px;
+    border: 1px solid #d8d8d8;
+    text-align: center;
+}
+
+em.sw {
+    font-weight: normal;
+    font-style: normal;
+    color: #f19a09;
+}
+
+a.link_back {
+    text-decoration: underline;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
