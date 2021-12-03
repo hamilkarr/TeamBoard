@@ -48,11 +48,13 @@ public class CommentDao {
 		
 		Member member = (Member)request.getAttribute("member");
 		String memId = member.getMemId();
-		String sql = "INSERT INTO boardcomment (postNm, memId, content) VALUES (?, ?, ?)";
+		String memLv = member.getMemLv();
+		String sql = "INSERT INTO boardcomment (postNm, memId, content, memLv) VALUES (?, ?, ?, ?)";
 		ArrayList<DBField> bindings = new ArrayList<>();
 		bindings.add(DB.setBinding("Integer", postNm));
 		bindings.add(DB.setBinding("String", memId));
 		bindings.add(DB.setBinding("String", content));
+		bindings.add(DB.setBinding("String", memLv));
 		int commentNm = DB.executeUpdate(sql, bindings, true);
 		
 		

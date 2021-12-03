@@ -78,19 +78,29 @@ String sopt = request.getParameter("sopt");
           </td>
           <td>
           	<c:choose>
-	      		<c:when test="${item.memId == 'administartor'}">
-	      			<c:out value="관리자"/>
-	      		</c:when>
-	      		<c:otherwise>
-	        		<c:out value="${item.memId}"/>
-	        	</c:otherwise>
-        	</c:choose>
+		     	<c:when test="${item.memLv == 'admin'}">
+		      		<span class="ico_board_tier master"></span>
+		      		 <c:out value="관리자" />
+		      	</c:when>
+		      	<c:when test="${item.memLv == 'platinum'}">
+		      		<span class="ico_board_tier platinum"></span>
+		      		<c:out value="${item.memId}"/>
+		      	</c:when>
+		      	<c:when test="${item.memLv == 'gold'}">
+		      		<span class="ico_board_tier gold"></span>
+		      		<c:out value="${item.memId}"/>
+		      	</c:when>
+		      	<c:otherwise>
+		      		<span class="ico_board_tier silver"></span>
+		      		<c:out value="${item.memId}"/>
+		       	</c:otherwise>
+	        </c:choose>
           </td>
           <td><c:out value="${item.regDtSt}" /></td>
           <td><fmt:formatNumber value="${item.viewCnt}" /></td>
       </c:forEach>
     </tbody>
-  </table>
+  </table>	
   <div id="board_bttom">
     <%=pagingHtml%>
     <button class="write_btn" onclick="location.href='write'">글쓰기</button>

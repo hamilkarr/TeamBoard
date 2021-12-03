@@ -7,7 +7,6 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 
 import com.core.*;
-import com.models.board.*;
 import com.models.file.*;
 import com.models.member.*;
 
@@ -32,6 +31,7 @@ public class BoardDao {
 		
 		Member member = (Member)request.getAttribute("member");
 		String memId = member.getMemId();
+		String memLv = member.getMemLv();
 		String gid = request.getParameter("gid");
 		
 		int isNotice = 0;
@@ -39,7 +39,7 @@ public class BoardDao {
 			isNotice = Integer.valueOf(request.getParameter("isNotice"));
 		}		
 		
-		String sql = "INSERT INTO board (gid, status, postTitle, content, memId, isNotice) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO board (gid, status, postTitle, content, memId, isNotice, memLv) VALUES(?,?,?,?,?,?,?)";
 		ArrayList<DBField> bindings = new ArrayList<>();
 		
 		bindings.add(DB.setBinding("Long", gid));
@@ -48,34 +48,14 @@ public class BoardDao {
 		bindings.add(DB.setBinding("String", request.getParameter("content")));
 		bindings.add(DB.setBinding("String", memId));
 		bindings.add(DB.setBinding("Integer", String.valueOf(isNotice)));
+		bindings.add(DB.setBinding("String", memLv));
 		
 		int rs = DB.executeUpdate(sql, bindings, true);
 		
 		FileDao.getInstance().updateFinish(gid);
 		
 		return rs;
-	}
-
-	/*
-	public int getTotal() {
-		int total = 0;
-
-		String sql = "SELECT COUNT(*) cnt from board";
-		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql);) {
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				total = rs.getInt("cnt");
-			}
-
-			rs.close();
-
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return total;
-	}
-	*/
+	}	
 	
 	public int getTotal() {
 		HttpServletRequest request = Req.get();
@@ -216,14 +196,25 @@ public class BoardDao {
 	
 
 	public boolean edit(HttpServletRequest request) throws Exception {
-
+		int postNm = Integer.parseInt(request.getParameter("postNm").trim());
+		
+		/** 로그인 여부확인  */
+		if (!MemberDao.isLogin(request)) {
+			throw new Exception("로그인 후 삭제가 가능합니다."); 
+		}
+		
+		/** 게시글 존재 여부확인 */
+		Board board = get(postNm);
+		if (board == null) {
+			throw new Exception("존재하지 않는 게시글 입니다.");
+		}
+		
 		/** 유효성 검사 **/
 		checkData(request);
 
 		String sql = "UPDATE board SET postTitle=?, status =?, content=?, isNotice = ? WHERE postNm=?";
 		try (Connection conn = DB.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			request.setCharacterEncoding("UTF-8");
-			int postNm = Integer.parseInt(request.getParameter("postNm").trim());
 			int isNotice = 0;
 			if (request.getParameter("isNotice") != null) {
 				isNotice = Integer.valueOf(request.getParameter("isNotice"));
@@ -264,8 +255,10 @@ public class BoardDao {
 		}
 		
 		Member member = (Member)request.getAttribute("member");
-		if (!member.getMemId().equals(board.getMemId())) {
-			throw new Exception("본인이 작성한 게시글만 삭제할 수 있습니다.");
+		if(!member.getMemLv().equals("admin")){
+			 if(!member.getMemId().equals(board.getMemId())){
+				throw new Exception("본인이 작성한 게시글만 삭제 할 수 있습니다.");
+			}
 		}
 		
 		String sql = "DELETE FROM board WHERE postNm=?";

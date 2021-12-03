@@ -52,7 +52,7 @@ public class FileController extends HttpServlet {
 				
 				PrintWriter out = res.getWriter();				
 				JSONObject uploadedFiles = FileUpload.upload(req);
-				//System.out.println(uploadedFiles);
+				System.out.println(uploadedFiles);
 				if(uploadedFiles == null) {
 					out.print("<script>alert('업로드 실패!');</script>");
 				} else{
