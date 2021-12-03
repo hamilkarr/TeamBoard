@@ -1,6 +1,11 @@
 # TeamBoard
 팀 포트폴리오 게시판 제작 저장소
 
+## update (21.12.03)
+- header 로고 추가하며 nav의 width 변경함
+- 조회페이지 댓글 수정란 css, jsp, js 수정
+- footer/inc/common.jsp 삭제
+
 ## update (21.11.29)
 - 조회 페이지 어느정도 완성했으나 세세한 수정 들어가야함. (view.jsp, view.css, view.js)
     - view.js .refer_cmt도 focus 되면 사라지는 기능 알아보기.
