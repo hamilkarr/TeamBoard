@@ -1,6 +1,10 @@
 # Develop Branch
 개발 기간 중 공유 버전으로 사용하는 브랜치 입니다.
 
+## Update (12-03)
+- 호스팅전 최종 점검
+- 서버와 DB 연동. Config/config.json
+
 ## Update (12-02)
 - "SQL 변경!!!"
 - Board.java : add(), getList() 변경
