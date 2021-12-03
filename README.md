@@ -3,7 +3,7 @@
 </p>
 
 > 배틀그라운드 게시판
-### 🏠  [website](https://)
+### 🏠  [website](http://hamilkarr2.cafe24.com/)
 
 <br>
 
