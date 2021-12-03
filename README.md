@@ -20,7 +20,6 @@
 ## :pushpin: Team A1
 
 ```sh
-(.. 생략가능!!!)
 2명의 백엔드와 3명의 프론트엔드 팀원이 함께 한 팀 프로젝트입니다.
 기존의 서비스를 100% 똑같이 직접 구현하면서 여러 로직들을 학습하는 시간이었습니다.
 어려운 기능 구현도 팀원들의 노력과 협동심으로 극복해 프로젝트를 완성했습니다.
@@ -63,7 +62,9 @@
 ### 1. 유저 로그인 페이지 (User Login Page) (소셜로그인)
 
 <center>
-    이미지 캡쳐
+    
+ ![image](https://user-images.githubusercontent.com/84768566/144599003-9171038b-eb23-4ee7-bfc4-7b164fd9912d.png)
+    
 </center>
 
 - Kakao API를 이용한 소셜 로그인
@@ -74,7 +75,9 @@
 ### 2. 회원가입 > 로그인 (User Login Page)
 
 <center>
-    이미지 캡쳐
+    
+ ![image](https://user-images.githubusercontent.com/84768566/144599132-865bda6f-ca4a-4724-b3b0-251ead609bcb.png)
+    
 </center>
 
 - 아이디, 비밀번호, 회원명, 휴대전화 정보를 통해 회원가입 후 로그인
@@ -84,7 +87,9 @@
 ### 3. 게시판 목록 페이지 (List Page)
 
 <center>
-    이미지 캡쳐
+    
+ ![image](https://user-images.githubusercontent.com/84768566/144599819-9ac07897-3746-41b6-8620-7bb3dc0e094e.png)
+    
 </center>
 
 - 글 항목에 따른 분류 (전체/ 일반/ 팁과 정보)
@@ -99,7 +104,9 @@
 ### 4. 글 작성 페이지(Write Page)
 
 <center>
-    이미지 캡쳐
+
+![image](https://user-images.githubusercontent.com/84768566/144600371-18bc2f3b-321e-4c69-97bf-651a7560079e.png)    
+    
 </center>
 
 - 게시글 작성
@@ -122,7 +129,7 @@
 ### 6. 글 수정 페이지(Edit Page)
 
 <center>
-    이미지 캡쳐
+    
 </center>
 
 - 게시글 수정
@@ -132,7 +139,9 @@
 ### 7. 회원정보 수정 페이지(Info Page)
 
 <center>
-    이미지 캡쳐
+    
+![image](https://user-images.githubusercontent.com/84768566/144598803-d0151d64-f8f1-49a5-8d0e-42763d6dce48.png)
+    
 </center>
 
 - 회원정보 수정
