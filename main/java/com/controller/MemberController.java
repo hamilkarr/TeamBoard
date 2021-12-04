@@ -13,7 +13,7 @@ import com.models.snslogin.*;
  *
  */
 public class MemberController extends HttpServlet {
-	
+	private static final long serialVersionUID = -2709377406420097453L;
 	private String httpMethod; // Http 요청 메서드, GET, POST
 	private PrintWriter out;
 	

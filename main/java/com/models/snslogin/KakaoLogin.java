@@ -40,8 +40,6 @@ public class KakaoLogin extends SocialLogin {
 	
 	@Override
 	public String getCodeURL() {
-		//	HttpServletRequest request = Req.get();
-		//	HttpSession session = request.getSession();
 		
 		StringBuilder sb = new StringBuilder();
 		

@@ -5,7 +5,6 @@
 String pagingHtml = (String)request.getAttribute("pagingHtml");
 String skey= request.getParameter("skey");
 String sopt = request.getParameter("sopt");
-//String total = (String)request.getAttribute("total");
 %>
 <c:set var="skey" value="<%=skey%>" />
  
@@ -51,6 +50,7 @@ String sopt = request.getParameter("sopt");
         	</c:otherwise>
         </c:choose>
           <td>
+          <!-- 글 구분 -->
           	<c:choose>
 	      		<c:when test="${item.status == 'normal'}">
 	      			<c:out value="일반"/>
@@ -64,6 +64,7 @@ String sopt = request.getParameter("sopt");
         	</c:choose>
           </td>
           <td>
+          <!-- 글 제목 -->
             <a href="view?postNm=${item.postNm}">
             	<c:out value="${item.postTitle}" />
             	<c:if test="${item.commentCnt > 0}">
@@ -77,25 +78,29 @@ String sopt = request.getParameter("sopt");
             </a>
           </td>
           <td>
-          	<c:choose>
+          <!-- 유저 정보 -->
+          	<div class="profile_popup" data-mem-id="${item.memId}" data-mem-lv="${item.memLv}">
+	          <c:choose>
 		     	<c:when test="${item.memLv == 'admin'}">
-		      		<span class="ico_board_tier master"></span>
-		      		 <c:out value="관리자" />
+			      	<span class="ico_board_tier master"></span>
+			      	<c:out value="관리자" />
 		      	</c:when>
 		      	<c:when test="${item.memLv == 'platinum'}">
-		      		<span class="ico_board_tier platinum"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier platinum"></span>
+			      	<c:out value="${item.memId}"/>
 		      	</c:when>
 		      	<c:when test="${item.memLv == 'gold'}">
-		      		<span class="ico_board_tier gold"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier gold"></span>
+			      	<c:out value="${item.memId}"/>
 		      	</c:when>
 		      	<c:otherwise>
-		      		<span class="ico_board_tier silver"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier silver"></span>
+			      	<c:out value="${item.memId}"/>
 		       	</c:otherwise>
 	        </c:choose>
+	        </div>
           </td>
+          <!-- 글 작성 시간 -->
           <td><c:out value="${item.regDtSt}" /></td>
           <td><fmt:formatNumber value="${item.viewCnt}" /></td>
       </c:forEach>
@@ -117,3 +122,5 @@ String sopt = request.getParameter("sopt");
   </div>  
 </div>
 <!-- 게시판 목록E -->
+
+<jsp:include page="_popup_profile.jsp" />

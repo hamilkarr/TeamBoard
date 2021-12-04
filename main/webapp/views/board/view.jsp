@@ -11,9 +11,9 @@
             <div class="info_head">
                 <dl class="left">
                     <dt>작성자</dt>
-                    <span class="ico_board_tier gold"></span>
-                    <dd><a href="">
-                    	<c:choose>
+                    <dd>
+                    <div class="profile_popup" data-mem-id="${view.memId}" data-mem-lv="${view.memLv}">
+			         	<c:choose>
 					     	<c:when test="${view.memLv == 'admin'}">
 					      		<span class="ico_board_tier master"></span>
 						      	<c:out value="관리자" />
@@ -31,11 +31,12 @@
 					      		<c:out value="${view.memId}"/>
 					       	</c:otherwise>
 				        </c:choose>
-                    </a></dd> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
+                    </div>
+                    </dd> 
                 </dl>
                 <dl class="right_f">
                     <dt>작성일</dt>
-                    <dd><c:out value="${view.regDt}" /></dd> <!-- dto -->
+                    <dd><c:out value="${view.regDt}" /></dd>
                 </dl>     
                 <dl class="right">
                     <dt>조회수</dt>
@@ -58,8 +59,10 @@
                 </c:otherwise>
             </c:choose>      
         </div>
-        
+
         <!-- 댓글 -->
         <jsp:include page="_comment.jsp" />
-
+        
+        <!-- 프로필 -->
+		<jsp:include page="_popup_profile.jsp" />
     </div>
