@@ -112,9 +112,9 @@ String sopt = request.getParameter("sopt");
     <!-- 검색 박스 -->
     <form name="searchForm" method="get" action="?" class=wrap_search >
     	<select name="sopt" class="search">    	
-    		<option value="postTitle"${sopt.equals("postTitle")?" selected":""}>제목 </option>
-    		<option value="postTitle_content"${sopt.equals("postTitle_content")?" selected":""}>제목 + 본문</option>
-    		<option value="memId"${sopt.equals("memId")?" selected":""}>작성자</option>
+    		<option value="postTitle" <c:if test="${sopt == 'postTitle'}">selected</c:if>> 제목 </option>
+    		<option value="postTitle_content" <c:if test="${sopt == 'postTitle_content'}">selected</c:if>>제목 + 본문</option>
+    		<option value="memId" <c:if test="${sopt == 'memId'}">selected</c:if>>작성자</option>
     	</select>
     	<input type="text" name="skey" class="search_box" value='${skey}' />
     	<button type="submit" class="search_btn"><i class="xi-search"></i></button>
