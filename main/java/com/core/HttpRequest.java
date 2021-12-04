@@ -81,7 +81,7 @@ public class HttpRequest {
 			}
 			
 			StringBuilder sb = new StringBuilder();
-			try (in;
+			try (
 				InputStreamReader isr = new InputStreamReader(in);
 				BufferedReader br = new BufferedReader(isr)) {
 				String line = null;
@@ -90,6 +90,8 @@ public class HttpRequest {
 				}
 			} catch (IOException e) {
 				Logger.log(e);
+			} finally {
+				in.close();
 			}
 			
 			String data = sb.toString();

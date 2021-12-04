@@ -1,5 +1,4 @@
 /** 메인 페이지 상단 */
-
 header {
 	position: relative;
 }
@@ -18,7 +17,7 @@ header {
 	text-align: center;
 	font-size: 0.8rem;
 	color: #f9930e;
-	font-weight: bold;
+	line-height: 34px;
 	
 }
 
@@ -34,13 +33,10 @@ header {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	width: 70px;
-	margin: 0 3px 0 6px;
-	border-bottom: 1px solid black;
-}
-
-.logout {
-	padding-top: 4px;
+	max-width: 70px;
+	margin: 0 4px 0 6px;
+	text-decoration: underline;
+	font-weight: 500;
 }
 
 .islogin .xi-user-o {
@@ -50,7 +46,7 @@ header {
 }
 
 .islogin span {
-	vertical-align: middle;
+	font-weight: 700;
 }
 
 .islogin:hover {
@@ -61,14 +57,22 @@ header {
 
 nav {
 	background-color: black;
-	width: 100%;
 	position: absolute;
 	z-index: 100;
+	width: 100%;
 }
 
 nav .nav_list .box {
 	text-align: center;
-	width:calc(100%/8);
+	width:calc(100% / 8);
+}
+
+nav .main_logo {
+	height: 48px;
+	line-height: 120px;
+	margin-left: -30px;
+	margin-right: 30px;
+	display: block;
 }
 
 nav .show-bar li {
@@ -100,6 +104,7 @@ nav .nav_list {
 	flex-direction: row;
 	position: relative;
 	margin: 0 auto;
+	width: 1300px;
 }
 
 /* js addClass */

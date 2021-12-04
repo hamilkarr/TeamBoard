@@ -75,16 +75,6 @@ public class Config {
 		return instance;
 	}
 	
-	/*
-	public static Config getInstance(boolean isNew) {
-		if (instance == null || isNew) {
-			instance = new Config();
-		}
-		
-		return instance;
-	}
-	*/
-	
 	public static void init(ServletRequest request) {
 		if (request instanceof HttpServletRequest) {
 			Config.request = (HttpServletRequest)request;

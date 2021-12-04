@@ -1,7 +1,7 @@
 /**
  * 댓글 처리 관련
  */
-const comment = {
+ const comment = {
 	/** URL에 commentNm 번호로 댓글 위치로 이동 */
 	moveToComment : function() {
 		if (location.search.indexOf("commentNm") == -1) 
@@ -38,16 +38,23 @@ const comment = {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status == 200) {
 				const div = document.createElement("div");
+				const editBtns = document.createElement("div");
 				const textarea = document.createElement("textarea");
 				const editButton = document.createElement("button");
 				const cancelButton = document.createElement("button");
 				const editText = document.createTextNode("수정");
 				const cancelText = document.createTextNode('취소');
-				div.id = id;
-				textarea.value = xhr.responseText;
 				
+				div.id = id;
+				//css 적용
+				div.style.marginTop = "10px";
+
+				textarea.value = xhr.responseText;
+				textarea.className = "edit_text";
+
 				editButton.className = "edit";
 				cancelButton.className = "cancel";
+				editBtns.className = "edit_btns";
 				
 				editButton.appendChild(editText);
 				cancelButton.appendChild(cancelText);
@@ -55,6 +62,9 @@ const comment = {
 				div.appendChild(textarea);
 				div.append(editButton);
 				div.append(cancelButton);
+				div.append(editBtns);
+				editBtns.appendChild(editButton);
+				editBtns.appendChild(cancelButton);
 				const el = document.querySelector(`#comment_${commentNm} .right_cmt`);
 				if (el) {
 					el.appendChild(div);

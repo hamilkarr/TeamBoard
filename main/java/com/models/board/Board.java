@@ -19,10 +19,11 @@ public class Board extends Dto<Board> {
 	private int commentCnt;
 	private int viewCnt;
 	private boolean isNew;
+	private String memLv;
 	
 	public Board() {}
 
-	public Board(int postNm, long gid, String status, String postTitle, String content, String memId, String regDt, int isNotice, int commentCnt, int viewCnt) {
+	public Board(int postNm, long gid, String status, String postTitle, String content, String memId, String regDt, int isNotice, int commentCnt, int viewCnt, String memLv) {
 		this.postNm = postNm;
 		this.gid = gid;
 		this.status = status;
@@ -33,6 +34,7 @@ public class Board extends Dto<Board> {
 		this.commentCnt = commentCnt;
 		this.viewCnt = viewCnt;
 		this.regDt = regDt;
+		this.memLv = memLv;
 		
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -65,7 +67,8 @@ public class Board extends Dto<Board> {
 				rs.getString("regDt"),
 				rs.getInt("isNotice"),
 				rs.getInt("commentCnt"),
-				rs.getInt("viewCnt")
+				rs.getInt("viewCnt"),
+				rs.getString("memLv")
 		);
 	}
 	
@@ -157,6 +160,14 @@ public class Board extends Dto<Board> {
 		this.viewCnt = viewCnt;
 	}
 	
+	public String getMemLv() {
+		return memLv;
+	}
+
+	public void setMemLv(String memLv) {
+		this.memLv = memLv;
+	}
+
 	public boolean getIsNew() {
 		return isNew;
 	}

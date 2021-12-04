@@ -1,6 +1,7 @@
 $(function(){
 	CKEDITOR.replace("content");
-	CKEDITOR.config.height = 300;
+	CKEDITOR.config.height = 450;
+
 	
 	$(".addImage").click(function(){
 		let url = "../popup/upload";

@@ -17,11 +17,11 @@ footer .site_map {
 }
 
 footer::before {
-	background-image: url("../img/footer_top.png");
+	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/bg_piece2.png) 50% 0 no-repeat;
 	content: "";
 	position: absolute;
 	top:-55px;
-	height: 60px;
+	height: 55px;
 	left: 0;
 	right: 0;
 }
