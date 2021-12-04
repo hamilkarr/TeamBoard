@@ -90,15 +90,7 @@ public class Comment extends Dto<Comment> {
 
 	public void setMemLv(String memLv) {
 		this.memLv = memLv;
-	}
-
-	public String getMemLv() {
-		return memLv;
-	}
-
-	public void setMemLv(String memLv) {
-		this.memLv = memLv;
-	}
+	}	
 
 	public String getRegDt() {
 		return regDt;
