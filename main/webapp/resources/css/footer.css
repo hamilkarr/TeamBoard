@@ -2,7 +2,8 @@
 
 footer {
 	background-color: black;
-	height: 400px;
+	padding: 100px 0;
+	margin-top: auto;
 	font-size: 0.9rem;
 	display: flex;
 	flex-direction: column;
@@ -16,7 +17,7 @@ footer .site_map {
 }
 
 footer::before {
-	background-image: url("../img/footer_top.png");
+	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/bg_piece2.png) 50% 0 no-repeat;
 	content: "";
 	position: absolute;
 	top:-55px;

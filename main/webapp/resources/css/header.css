@@ -1,4 +1,7 @@
 /** 메인 페이지 상단 */
+header {
+	position: relative;
+}
 
 .main_top .inner {
 	height: 70px;
@@ -7,10 +10,6 @@
 	justify-content: end;
 }
 
-/* .main_top .inner a:first-child {
-	margin-right: 0.5rem;
-} */
-
 .islogin {
 	border: 1px solid #f9930e;
 	width: 152px;
@@ -18,7 +17,7 @@
 	text-align: center;
 	font-size: 0.8rem;
 	color: #f9930e;
-	font-weight: bold;
+	line-height: 34px;
 	
 }
 
@@ -34,13 +33,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	width: 70px;
-	margin: 0 3px 0 6px;
-	border-bottom: 1px solid black;
-}
-
-.logout {
-	padding-top: 4px;
+	max-width: 70px;
+	margin: 0 4px 0 6px;
+	text-decoration: underline;
+	font-weight: 500;
 }
 
 .islogin .xi-user-o {
@@ -50,7 +46,7 @@
 }
 
 .islogin span {
-	vertical-align: middle;
+	font-weight: 700;
 }
 
 .islogin:hover {
@@ -62,31 +58,39 @@
 nav {
 	background-color: black;
 	position: absolute;
+	z-index: 100;
 	width: 100%;
 }
 
 nav .nav_list .box {
 	text-align: center;
-	width:calc(100%/8);
+	width:calc(100% / 8);
+}
+
+nav .main_logo {
+	height: 48px;
+	line-height: 120px;
+	margin-left: -30px;
+	margin-right: 30px;
+	display: block;
 }
 
 nav .show-bar li {
 	margin-top: 5px;
 }
 
+nav .show-bar {
+	font-size: 0.9rem;
+	height: 230px;
+	padding-top: 30px;
+	width: 100%;
+	background-color: black;
+	left: 0;
+}
+
 nav .show-bar a:hover {
 	border-bottom: 1px solid #E0AC47;
 	color: #E0AC47;
-}
-
-.border_bottom {
-	height: 1px;
-	background-color: rgb(39, 39, 39);
-}
-
-.border_bottom_each {
-	height: 3px;
-	background-color: #E0AC47;
 }
 
 nav .nav_over {
@@ -98,15 +102,31 @@ nav .nav_over {
 nav .nav_list {
 	display: flex;
 	flex-direction: row;
+	position: relative;
+	margin: 0 auto;
+	width: 1300px;
 }
-nav .show-bar {
-	display: flex;
-	flex-direction: column;
-	height: 230px;
-	padding-top: 30px;
+
+/* js addClass */
+
+.border_bottom {
+	height: 1px;
+	background-color: rgb(39, 39, 39);
+}	
+
+.inner-bar {
+	display: none;
+	position: absolute;
+	top: 90px;
+	height: 3px;
+	background-color: #E0AC47;
 }
-  
+
+.on {
+	display: block;
+}
+
 .fixed-nav {
 	position: fixed; 
-	top:0px;
+	top: 0px;
 }

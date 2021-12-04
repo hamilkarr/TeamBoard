@@ -13,7 +13,7 @@ import com.models.snslogin.*;
  *
  */
 public class MemberController extends HttpServlet {
-	
+	private static final long serialVersionUID = -2709377406420097453L;
 	private String httpMethod; // Http 요청 메서드, GET, POST
 	private PrintWriter out;
 	
@@ -104,7 +104,7 @@ public class MemberController extends HttpServlet {
 				// 가입 성공 -> 로그인페이지
 				String redirectUrl = "../index.jsp";
 				if (socialMember != null) { // 소셜 회원 가입은 로그인 처리하므로 작업 요약으로 이동 
-					redirectUrl = "../kanban/work";
+					redirectUrl = "../board/list";
 				}
 				out.printf("<script>parent.location.replace('%s');</script>", redirectUrl);
 				
@@ -176,13 +176,13 @@ public class MemberController extends HttpServlet {
 			String kakaoCodeURL = KakaoLogin.getInstance().getCodeURL();
 			request.setAttribute("kakaoCodeURL", kakaoCodeURL);			
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/views/main/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/board/list.jsp");
 			rd.include(request, response);
 		} else {
 			MemberDao dao = MemberDao.getInstance();
 			try {
 				dao.login(request);
-				out.printf("<script>parent.location.replace('%s');</script>", "../board");
+				out.printf("<script>parent.location.replace('%s');</script>", "../board/list");
 			} catch (Exception e) {
 				Logger.log(e);
 				out.printf("<script>alert('%s');</script>", e.getMessage());
@@ -346,7 +346,7 @@ public class MemberController extends HttpServlet {
 					throw new Exception("네이버 아이디 로그인 실패!");
 				}
 				// 로그인 성공시 작업 요약 
-				out.printf("<script>location.replace('%s');</script>", "../board");
+				out.printf("<script>location.replace('%s');</script>", "../board/list");
 			} else { // 미가입
 				// 회원 가입 페이지 이동
 				out.printf("<script>location.replace('%s');</script>", "../member/join");
@@ -382,7 +382,7 @@ public class MemberController extends HttpServlet {
 					throw new Exception("카카오 아이디 로그인 실패!");
 				}
 				// 로그인 성공시 작업 요약 
-				out.printf("<script>location.replace('%s');</script>", "../board");
+				out.printf("<script>location.replace('%s');</script>", "../board/list");
 			} else { // 미가입
 				// 회원 가입 페이지 이동
 				out.printf("<script>location.replace('%s');</script>", "../member/join");

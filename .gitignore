@@ -65,6 +65,13 @@ local.properties
 .sts4-cache/
 
 ### Java ###
+# Base
+/build/
+.project
+.classpath
+/.settings/
+./config/
+
 # Compiled class file
 *.class
 

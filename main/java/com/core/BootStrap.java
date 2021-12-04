@@ -13,8 +13,6 @@ import com.models.member.*;
 public class BootStrap  {
 	public static void init(ServletRequest request, ServletResponse response) throws IOException, ServletException {
 	
-		
-		
 		/** 사이트 설정 초기화 */
 		Config.init(request);
 		Config config = Config.getInstance();
@@ -69,10 +67,7 @@ public class BootStrap  {
 			req.setCharacterEncoding("UTF-8");
 		}
 
-		
-		
 		// AccessController.init(request, response);
-		
 		Req.set(request);
 		Res.set(response);
 	}

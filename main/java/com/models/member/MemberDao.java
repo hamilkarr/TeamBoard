@@ -21,7 +21,7 @@ public class MemberDao {
 	private static MemberDao instance = new MemberDao();
 	private static Member socialMember;
 	
-	private MemberDao() {};  // 기본 생성자 private -> 외부 생성 X, 내부에서만 생성 O
+	private MemberDao() {};
 	
 	public static MemberDao getInstance() {
 		if (instance == null) {
@@ -95,12 +95,16 @@ public class MemberDao {
 		 */
 		checkJoinData(request);
 		
+		/** 유저 등급 설정 */
+		String[] levels = {"silver", "gold", "platinum"};
+		int level = (int)Math.floor(Math.random()* 3);
+		
 		ArrayList<DBField> bindings = new ArrayList<>();
 		String sql = "INSERT INTO member (memId, memPw, memPwHint, memNm, memLv ,cellPhone, socialType, socialId) VALUES (?,?,?,?,?,?,?,?)";
 		String memPw = request.getParameter("memPw");
 		String hash = "";
 		String memPwHint = "";
-		String memLv = "silver";
+		String memLv = levels[level];
 		String socialType = "none";
 		String socialId = "";
 		if (socialMember == null) { // 일반회원 -> 비밀번호 해시
@@ -324,7 +328,7 @@ public class MemberDao {
 			throw new Exception("비밀번호는 8자리 이상 입력해 주세요.");
 		}
 		// 비밀번호 복잡성(숫자 + 알파벳 + 특수문자가 각각 1개 이상 입력)		
-		if (!memPw.matches(".*[0-9].*") || !memPw.matches(".*[a-zA-Z].*") || !memPw.matches(".*[!@#$%^&*()].*")) {
+		if (!memPw.matches(".*[0-9].*") || !memPw.matches(".*[a-zA-Z].*") || !memPw.matches(".*[`!@#$%^&*()-_=+<>/?].*")) {
 			throw new Exception("비밀번호는 1개 이상의 알파벳, 숫자, 특수문자를 각각 포함해야 합니다.");
 		}
 		
