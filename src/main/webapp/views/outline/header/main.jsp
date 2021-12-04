@@ -21,12 +21,14 @@
 <html>
 	<head>
 		<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/common.css${version}" />
 		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/header.css${version}" />
 		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/footer.css${version}" />
 		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/view.css${version}" />
+		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/profile.css">
 		<c:forEach var="css" items="${addCss}">
 		<link rel="stylesheet" type="text/css" href="${rootURL}/resources/css/${css}.css${version}" />
 		</c:forEach>

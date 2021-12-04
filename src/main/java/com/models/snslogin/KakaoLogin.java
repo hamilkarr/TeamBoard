@@ -77,8 +77,6 @@ public class KakaoLogin extends SocialLogin {
 				throw new Exception((String)json.get("error_description"));
 			}
 		}
-		
-//		System.out.println("##AccessToken: " + accessToken.toString());
 		return accessToken;
 		
 	}

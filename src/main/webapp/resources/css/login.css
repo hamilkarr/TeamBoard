@@ -24,10 +24,7 @@ a{
 	border-bottom: 1px solid gray;
 }
 
-/** 헤더 list와 로그인박스가 겹침! */
-
 /** main/index.jsp 로그인 */
-
 .loginbox {
 	width: 500px; 
 	height: 590px;

@@ -4,24 +4,33 @@
   	font-family: "Noto Sans KR", sans-serif;
 }
 
-html {
-	font-size: 13px; color: black;
-}
-
-a{
-	text-decoration: none;
-	color:black;
-}
 
 /** 공통 member title */
 
 .member_tit {
-	font-size: 30px;
+	font-size: 1.77rem;
 	font-weight: bold;
 	text-align: center;
 	padding-bottom: 15px;
 	margin-bottom: 25px;
 	border-bottom: 1px solid gray;
+}
+
+/** 회원정보 ID **/
+
+.cg_id {
+	margin-bottom: 10px; 
+	border: 1px solid #dfdfdf ;
+	border-radius: 3px;
+	width: 100%;
+	height: 50px;
+	padding:12px 10px 8px;
+	font-size: 0.85rem;
+}
+
+.id_info {
+	font-size: 0.65rem;
+	color: #595959;
 }
 
 /** 헤더 list와 로그인박스가 겹침! */
@@ -52,7 +61,7 @@ a{
 	width: 100%; 
 	height: 55px;
 	display: block;
-	font-size: 20px;
+	font-size: 1.2rem;
 	font-weight: bold;
 	color: #ffffff;
 	background-color: #e89407;
@@ -60,6 +69,10 @@ a{
 	border: none; 
 	cursor: pointer;
 	margin-top: 25px;
+}
+
+.loginbox input[type='submit']:hover {
+	background-color: #e18100;
 }
 
 .loginbox .findjoin_link {
@@ -74,10 +87,12 @@ a{
 
 .loginbox .findjoin_link .left {
 	float: left; 
+	font-size:0.9rem;
 } 
 
 .loginbox .findjoin_link .right {
 	float: right;
+	font-size:0.9rem;
 }
 
 .loginbox .findjoin_link a:hover {
@@ -93,7 +108,7 @@ a{
     flex-basis: 100%;
     align-items: center; 
     color: #a1a1a1;
-    font-size: 14px;
+    font-size: 0.85rem;
     margin: 8px 0px;
 }
 
@@ -103,7 +118,7 @@ a{
     flex-grow: 1;
     background: #a1a1a1;
     height: 1px;
-    font-size: 0px;
+    font-size: 0rem;
     line-height: 0px;
     margin: 0px 16px;
 }
@@ -119,15 +134,15 @@ a{
 
 .joinbox {
 	width: 550px; 
-	height: 750px;
+	height: auto;
 }
 
 .joinbox input[type='reset'] {
 	height: 36px;
 	float: right;
-	font-size: 15px;
-	color: #ffffff;
-	background-color: black;
+	font-size: 0.9rem;
+	color: #000000;
+	background-color: #ffffff;
 	border: none; 
 	cursor: pointer;
 	border-radius: 3px;

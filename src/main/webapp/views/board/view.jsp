@@ -11,7 +11,8 @@
             <div class="info_head">
                 <dl class="left">
                     <dt>작성자</dt>
-                    <dd><a href="">
+                    <dd>
+                    <div class="profile_popup" data-mem-id="${view.memId}" data-mem-lv="${view.memLv}">
 			         	<c:choose>
 					     	<c:when test="${view.memLv == 'admin'}">
 					      		<span class="ico_board_tier master"></span>
@@ -30,11 +31,12 @@
 					      		<c:out value="${view.memId}"/>
 					       	</c:otherwise>
 				        </c:choose>
-                    </a></dd> <!-- a 태그 아이디 정보 팝업?(list처럼)  -->
+                    </div>
+                    </dd> 
                 </dl>
                 <dl class="right_f">
                     <dt>작성일</dt>
-                    <dd><c:out value="${view.regDt}" /></dd> <!-- dto -->
+                    <dd><c:out value="${view.regDt}" /></dd>
                 </dl>     
                 <dl class="right">
                     <dt>조회수</dt>
@@ -49,7 +51,7 @@
             <a href="../board/list" class="btn_list"><i class="xi-bars xi-x"></i></a>
             <c:choose>
                 <c:when test="${isLogin && (member.memId == view.memId || member.memLv == 'admin')}"> <!-- 본인 글일때 -->
-                	<a class="btn_write" href="delete?postNm=${view.postNm}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</a>
+                	<a class="btn_write del_cnt" href="delete?postNm=${view.postNm}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제하기</a>
                     <a class="btn_write" href="edit?postNm=${view.postNm}">수정하기</a>
                 </c:when>	
                 <c:otherwise>
@@ -57,8 +59,10 @@
                 </c:otherwise>
             </c:choose>      
         </div>
-        
+
         <!-- 댓글 -->
         <jsp:include page="_comment.jsp" />
-
+        
+        <!-- 프로필 -->
+		<jsp:include page="_popup_profile.jsp" />
     </div>
