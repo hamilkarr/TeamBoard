@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import com.core.*;
+import com.models.board.*;
 import com.models.file.*;
 import com.models.member.*;
 
@@ -55,8 +57,8 @@ public class BoardDao {
 		FileDao.getInstance().updateFinish(gid);
 		
 		return rs;
-	}	
-	
+	}
+
 	public int getTotal() {
 		HttpServletRequest request = Req.get();
 		
@@ -94,7 +96,7 @@ public class BoardDao {
 		int total = DB.getCount("board", fields, bindings);
 		System.out.println("total : " + total);
 		return total;
-	}	
+	}
 
 	public ArrayList<Board> getList(int page, int limit) {
 		page = (page <= 0) ? 1 : page;
@@ -153,7 +155,7 @@ public class BoardDao {
 		ArrayList<Board> list = DB.executeQuery(sql, bindings, new Board());
 		
 		return list;
-	}	
+	}
 
 	public ArrayList<Board> getList(int page) {
 		return getList(page, 15);
@@ -192,11 +194,10 @@ public class BoardDao {
 		}
 		return get(postNm);
 	}
-	
-	
 
 	public boolean edit(HttpServletRequest request) throws Exception {
 		int postNm = Integer.parseInt(request.getParameter("postNm").trim());
+		Member member = (Member)request.getAttribute("member");
 		
 		/** 로그인 여부확인  */
 		if (!MemberDao.isLogin(request)) {
@@ -217,8 +218,11 @@ public class BoardDao {
 			request.setCharacterEncoding("UTF-8");
 			int isNotice = 0;
 			if (request.getParameter("isNotice") != null) {
-				isNotice = Integer.valueOf(request.getParameter("isNotice"));
+				if(member.getMemLv().equals(board.getMemLv())){
+					isNotice = Integer.valueOf(request.getParameter("isNotice"));
+				}
 			}
+			
 			pstmt.setString(1, request.getParameter("postTitle"));
 			pstmt.setString(2, request.getParameter("status"));
 			pstmt.setString(3, request.getParameter("content"));
@@ -255,6 +259,7 @@ public class BoardDao {
 		}
 		
 		Member member = (Member)request.getAttribute("member");
+		
 		if(!member.getMemLv().equals("admin")){
 			 if(!member.getMemId().equals(board.getMemId())){
 				throw new Exception("본인이 작성한 게시글만 삭제 할 수 있습니다.");

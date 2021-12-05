@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<nav>
-			<ul class='nav_list'>
+		<ul class='nav_list'>
 				<div class="inner-bar"></div>
 				<a class="main_logo" href="${rootURL}/board/list"><img src="https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/logo_pubg2-1.png" alt="logo"></a>
 			<li class='box'>

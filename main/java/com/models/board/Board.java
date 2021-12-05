@@ -167,7 +167,7 @@ public class Board extends Dto<Board> {
 	public void setMemLv(String memLv) {
 		this.memLv = memLv;
 	}
-	
+
 	public boolean getIsNew() {
 		return isNew;
 	}
