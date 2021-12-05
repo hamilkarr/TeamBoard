@@ -5,9 +5,9 @@
 String pagingHtml = (String)request.getAttribute("pagingHtml");
 String skey= request.getParameter("skey");
 String sopt = request.getParameter("sopt");
-//String total = (String)request.getAttribute("total");
 %>
 <c:set var="skey" value="<%=skey%>" />
+<c:set var="sopt" value="<%=sopt%>" />
  
 <!-- 게시판 목록S -->
 <div class="inner_box">
@@ -51,6 +51,7 @@ String sopt = request.getParameter("sopt");
         	</c:otherwise>
         </c:choose>
           <td>
+          <!-- 글 구분 -->
           	<c:choose>
 	      		<c:when test="${item.status == 'normal'}">
 	      			<c:out value="일반"/>
@@ -64,7 +65,8 @@ String sopt = request.getParameter("sopt");
         	</c:choose>
           </td>
           <td>
-            <a href="view?postNm=${item.postNm}">
+          <!-- 글 제목 -->
+            <a class="postNm" href="view?postNm=${item.postNm}">
             	<c:out value="${item.postTitle}" />
             	<c:if test="${item.commentCnt > 0}">
             	<span class='comment_cnt'>
@@ -77,25 +79,29 @@ String sopt = request.getParameter("sopt");
             </a>
           </td>
           <td>
-          	<c:choose>
+          <!-- 유저 정보 -->
+          	<div class="profile_popup" data-mem-id="${item.memId}" data-mem-lv="${item.memLv}">
+	          <c:choose>
 		     	<c:when test="${item.memLv == 'admin'}">
-		      		<span class="ico_board_tier master"></span>
-		      		 <c:out value="관리자" />
+			      	<span class="ico_board_tier master"></span>
+			      	<c:out value="관리자" />
 		      	</c:when>
 		      	<c:when test="${item.memLv == 'platinum'}">
-		      		<span class="ico_board_tier platinum"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier platinum"></span>
+			      	<c:out value="${item.memId}"/>
 		      	</c:when>
 		      	<c:when test="${item.memLv == 'gold'}">
-		      		<span class="ico_board_tier gold"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier gold"></span>
+			      	<c:out value="${item.memId}"/>
 		      	</c:when>
 		      	<c:otherwise>
-		      		<span class="ico_board_tier silver"></span>
-		      		<c:out value="${item.memId}"/>
+			      	<span class="ico_board_tier silver"></span>
+			      	<c:out value="${item.memId}"/>
 		       	</c:otherwise>
 	        </c:choose>
+	        </div>
           </td>
+          <!-- 글 작성 시간 -->
           <td><c:out value="${item.regDtSt}" /></td>
           <td><fmt:formatNumber value="${item.viewCnt}" /></td>
       </c:forEach>
@@ -107,9 +113,9 @@ String sopt = request.getParameter("sopt");
     <!-- 검색 박스 -->
     <form name="searchForm" method="get" action="?" class=wrap_search >
     	<select name="sopt" class="search">    	
-    		<option value="postTitle"${sopt.equals("postTitle")?" selected":""}>제목 </option>
-    		<option value="postTitle_content"${sopt.equals("postTitle_content")?" selected":""}>제목 + 본문</option>
-    		<option value="memId"${sopt.equals("memId")?" selected":""}>작성자</option>
+    		<option value="postTitle" <c:if test="${sopt == 'postTitle'}">selected</c:if>> 제목 </option>
+    		<option value="postTitle_content" <c:if test="${sopt == 'postTitle_content'}">selected</c:if>>제목 + 본문</option>
+    		<option value="memId" <c:if test="${sopt == 'memId'}">selected</c:if>>작성자</option>
     	</select>
     	<input type="text" name="skey" class="search_box" value='${skey}' />
     	<button type="submit" class="search_btn"><i class="xi-search"></i></button>
@@ -117,3 +123,5 @@ String sopt = request.getParameter("sopt");
   </div>  
 </div>
 <!-- 게시판 목록E -->
+
+<jsp:include page="_popup_profile.jsp" />

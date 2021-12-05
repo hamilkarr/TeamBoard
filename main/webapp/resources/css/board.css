@@ -68,7 +68,12 @@ h3 {
 }
 
 .tit_list li a {
+    font-size: 1.3rem;
+}
+
+.tit_list li a:hover {
 	color: #e89407;
+    text-decoration: underline;
 }
 
 .tit_link{
@@ -97,16 +102,13 @@ h3 {
 	background: url(https://t1.kakaocdn.net/gamepub/pub/battlegrounds/images/icon-rank-board.png) no-repeat;
 }
 .ico_board_tier.silver {
-    background-position: -30px -60px;
+    background-position:right -60px;
 }
 .ico_board_tier.gold {
-    background-position: right -90px;
+	background-position:right -90px;
 }
 .ico_board_tier.platinum {
-    background-position: right -120px;
-}
-.ico_board_tier.bronze {
-    background-position: -30px -30px;
+    background-position:right -120px;
 }
 
 /* 게시판 목록 table */
@@ -114,6 +116,7 @@ h3 {
 	width: 100%;
 	text-align: center;
 	color: #252525;
+    margin-top: 10px;
 	margin-bottom: 20px;
 	border-collapse: collapse;
 }
@@ -134,6 +137,22 @@ h3 {
 .tr_list td {
 	padding: 20px 0;
 	border-bottom: 1px solid #d8d8d8;
+}
+
+.postNm:hover {
+    text-decoration: underline;
+}
+
+.profile_popup {
+    cursor: pointer;
+}
+
+.profile_popup:hover {
+    text-decoration: underline;
+}
+
+.comment_cnt {
+	color: #f19a09;
 }
 
 /** 공지사항 */
@@ -244,4 +263,30 @@ a.link_back {
     text-decoration: underline;
     font-size: 0.85rem;
     font-weight: bold;
+}
+
+/* 프로필 팝업 */
+#popup_profile {
+    background-color: #1f1f1f;
+    width: 240px;
+    height: 120px;
+}
+
+.popup_font {
+    color: #d8d8d8;
+}
+
+.popup_line {
+    margin-top: -10px;
+}
+
+.popup_id {
+    color: #f7ad52;
+    font-size: 1rem;
+    border-bottom: 1px solid #858283;
+}
+
+.popup_lv {
+    margin-top: -10px;
+    text-align: center;
 }

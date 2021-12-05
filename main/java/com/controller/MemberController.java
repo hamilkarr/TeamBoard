@@ -13,7 +13,7 @@ import com.models.snslogin.*;
  *
  */
 public class MemberController extends HttpServlet {
-	
+	private static final long serialVersionUID = -2709377406420097453L;
 	private String httpMethod; // Http 요청 메서드, GET, POST
 	private PrintWriter out;
 	
@@ -104,7 +104,7 @@ public class MemberController extends HttpServlet {
 				// 가입 성공 -> 로그인페이지
 				String redirectUrl = "../index.jsp";
 				if (socialMember != null) { // 소셜 회원 가입은 로그인 처리하므로 작업 요약으로 이동 
-					redirectUrl = "../kanban/work";
+					redirectUrl = "../board/list";
 				}
 				out.printf("<script>parent.location.replace('%s');</script>", redirectUrl);
 				
