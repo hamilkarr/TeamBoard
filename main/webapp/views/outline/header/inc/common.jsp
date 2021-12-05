@@ -20,7 +20,7 @@
 				</a>
 			</c:when>
 			<c:otherwise>
-				<a class="islogin" href="${rootURL}">
+				<a class="islogin" href="${rootURL}/index.jsp">
 					<i class="xi-user-o"></i>
 					<span>로그인</span>
 				</a>
