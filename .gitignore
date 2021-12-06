@@ -71,6 +71,8 @@ local.properties
 .classpath
 /.settings/
 ./config/
+A1/
+Servers/
 
 # Compiled class file
 *.class
