@@ -11,6 +11,7 @@ import com.models.*;
  *
  */
 public class DB {
+	// private boolean isLogging = true;
 	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		HashMap<String, String> config = (HashMap<String, String>)Config.getInstance().get("DB");
 		
