@@ -14,12 +14,15 @@
 
 
 ## Overview
-<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" height="700">
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" height="900">
+</p>
     
 <details>
     <summary>펼치기/접기</summary>
     
+___
 |로그인(소셜 로그인)|회원가입|
 |:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/84768566/144599003-9171038b-eb23-4ee7-bfc4-7b164fd9912d.png">|<img src="https://user-images.githubusercontent.com/84768566/144599132-865bda6f-ca4a-4724-b3b0-251ead609bcb.png">|
@@ -28,9 +31,10 @@
 |:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/84768566/144598803-d0151d64-f8f1-49a5-8d0e-42763d6dce48.png">|<img src="https://user-images.githubusercontent.com/84768566/144600371-18bc2f3b-321e-4c69-97bf-651a7560079e.png">|
     
-|댓글 쓰기|게시글 검색 결과|
+|댓글 수정|게시글 검색 결과|
 |:-:|:-:|
-|<img src="https://user-images.githubusercontent.com/84768566/144598803-d0151d64-f8f1-49a5-8d0e-42763d6dce48.png">|<img src="https://user-images.githubusercontent.com/84768566/144600371-18bc2f3b-321e-4c69-97bf-651a7560079e.png">|
+|<img src="https://user-images.githubusercontent.com/86813319/145556382-86c52624-1436-438a-a89e-d46c8c979b3f.png">|<img src="https://user-images.githubusercontent.com/86813319/145556386-5217f112-e52d-40cb-a8ba-199ac4bcd65d.png">|
+___    
 
 </details>
 
@@ -92,5 +96,6 @@ Frontend : **bomi**
 ## 📝 License
 
 © 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.  <br>
+
 
 
