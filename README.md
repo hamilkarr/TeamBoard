@@ -1,8 +1,5 @@
-<h1 align="center">Teamboard <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="48px"></h1>
-<p>
-</p>
+<h1 align="center"> 배틀그라운드 클론 게시판</h1>
 
-> 배틀그라운드 게시판
 ### 🏠  [website](http://hamilkarr2.cafe24.com/)
 
 <br>
@@ -10,47 +7,22 @@
 ## ✨ Description
 
 ```sh
-배틀그라운드 커뮤니티 게시판을 클린코딩해 반응형 웹으로 제작한 팀 프로젝트입니다.
+배틀그라운드 커뮤니티 게시판을 클론 코딩해 반응형 웹으로 제작한 팀 프로젝트입니다.
 회원가입 후 로그인, 소셜로그인을 통해 게시판에 글을 작성할 수 있습니다.
-게시글 CRUD & 검색, 댓글 CRUD, 파일 업로드, 조회수 기능까지 구현해 게시판의 기능을 모두 경험해 볼 수 있습니다!
+게시글 CRUD & 검색, 댓글 CRUD, 파일 업로드, 조회수 기능까지 구현해 게시판의 기능을 모두 경험해 볼 수 있습니다.
 ```
 
-### 제작기간
-
-
-
-
-## :mag: 서비스 기능
-
-<center>
-    기능 정리 (+++ 간단하게 로직 추가!!!)
-    
-    member 
-           - login
-           - join
-           - socialLogin
-           - superLogin
-           
-    board
-           - write
-           - list
-           - view
-           - edit
-           - delete
-           - notice
-           - comment
-           - pagenation
-           - search
-           - upload
-           - viewCnt
-           - logger
-           ....
-           
-      
-</center>
 
 ## :mag: Overview
-
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" height="800">
+    
+<details>
+    <summary>펼치기/접기</summary>
+    
+|First Image|Second Image|
+|:-:|:-:|
+|![First Image](https://images.pexels.com/photos/585759/pexels-photo-585759.jpeg?h=750&w=1260)|![Second Image](https://images.pexels.com/photos/1335115/pexels-photo-1335115.jpeg?h=750&w=1260)|
+    
 ### 1. 유저 로그인 페이지 (User Login Page) (소셜로그인)
 
 <center>
@@ -78,11 +50,7 @@
 
 ### 3. 게시판 목록 페이지 (List Page)
 
-<center>
-    
- ![image](https://user-images.githubusercontent.com/84768566/144599819-9ac07897-3746-41b6-8620-7bb3dc0e094e.png)
-    
-</center>
+
 
 - 글 항목에 따른 분류 (전체/ 일반/ 팁과 정보)
 - 공지사항 상단고정 (작성자 : 관리자)
@@ -140,6 +108,39 @@
 
 <br>
 
+<!-- summary 아래 한칸 공백 두고 내용 삽입 -->
+
+</details>
+
+
+## :mag: 서비스 기능
+
+<center>
+    기능 정리 (+++ 간단하게 로직 추가!!!)
+    
+    member 
+           - login
+           - join
+           - socialLogin
+           - superLogin
+           
+    board
+           - write
+           - list
+           - view
+           - edit
+           - delete
+           - notice
+           - comment
+           - pagenation
+           - search
+           - upload
+           - viewCnt
+           - logger
+           ....
+           
+      
+</center>
 
 ## :wrench: Tech Stack
 
@@ -169,3 +170,5 @@ Frontend : **bomi**
 ## 📝 License
 
 © 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.  <br>
+
+
