@@ -40,6 +40,7 @@ ___
 
 
 ## :mag: 서비스 기능
+![MVC Model2](https://user-images.githubusercontent.com/86813319/145570780-012231f0-61a4-424a-a0ea-679802eaa295.png)
 
 <center>
     기능 정리 (+++ 간단하게 로직 추가!!!)
@@ -96,6 +97,7 @@ Frontend : **bomi**
 ## 📝 License
 
 © 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.  <br>
+
 
 
 
