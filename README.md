@@ -35,16 +35,34 @@ ___
 |:-:|:-:|:-:|
 |![아이디 팝업](https://user-images.githubusercontent.com/86813319/145596135-35648fe1-ebf5-4db7-8aa6-dd39f184f86c.png)|![이미지 업로드](https://user-images.githubusercontent.com/86813319/145596143-70a5d924-baaa-4d2d-8b11-ea7d2f78c971.png)|![분류별 정렬](https://user-images.githubusercontent.com/86813319/145596656-763d06e3-630d-4d33-82ac-e4b8e0077f2f.png)|
 
-___    
-
 </details>
 
-||주요 기능|
-|:---|:---|
-|<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" height="900">|**Member** <br> - 일반 회원 가입, 로그인 <br> - 소셜 회원 가입, 로그인 (oauth 인증) <br> - 모든 회원은 가입시 랜덤으로 랭크 부여(실버,골드,플래티넘중 하나) <br> - 게시판에서 아이디 클릭시 랭크 팝업 <br> - 공지사항 작성, 모든 게시글 댓글 수정 삭제 가능한 '관리자 등급' 계정 |
+***
+
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="right" height="900" margin-right="15">
+
+### 회원 관련 기능
+- 일반 회원 가입, 로그인
+- 소셜 회원 가입, 로그인 (oauth 인증)
+- 모든 타입의 회원은 가입시 랜덤(실버, 골드, 플래티넘)으로 랭크 부여  
+    <s>당신의 배틀그라운드 랭크는 더이상 브론즈가 아닙니다</s>
+- 슈퍼 계정(관리자 등급)
+    - 공지사항 작성 
+    - 모든 게시글, 모든 댓글 삭제 및 수정
+ 
+### 게시판 관련 기능
+- 게시글 작성,삭제,수정,조회
+    - 게시글에 이미지 추가 가능
+- 댓글 작성,삭제,수정,조회
+    - 댓글 작성시 실시간 글자수 카운트
+- 공지 사항 게시글은 게시판의 항상 최상단
+- 제목, 내용으로 게시글 검색 기능
+- 조회수(로그인,비로그인) 카운트
+
 
 <br>
 
+***
 ## 구조
 ![MVC Model2](https://user-images.githubusercontent.com/86813319/145570780-012231f0-61a4-424a-a0ea-679802eaa295.png)
 
