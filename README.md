@@ -79,10 +79,11 @@ ___
 
 ### Data Base (mySQL 8.0)  
 
-
+[Data Base SQL](https://github.com/hamilkarr/TeamBoard/tree/master/main/sql)  
   
 ![drawSQL-export-2021-12-12_15_42](https://user-images.githubusercontent.com/86813319/145703150-cd4d4c1d-803e-4bec-87ba-2594eb1f379c.png)
 
+***
 
 ## :wrench: Tech Stack
 
@@ -107,7 +108,6 @@ Frontend : **bomi**
 <hr>
 
 
-## © License
+## License
 
-© 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.  <br>
-
+© 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.
