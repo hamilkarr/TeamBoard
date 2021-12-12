@@ -4,7 +4,7 @@
 
 <br>
 
-## 요약
+## 📝 Description
 
 ```sh
 배틀그라운드 커뮤니티 게시판을 클론 코딩해 반응형 웹으로 제작한 팀 프로젝트입니다.
@@ -13,7 +13,7 @@
 ```
 <br>
 
-## 살펴보기
+## :mag: Overview
 
 <details>
     <summary>자세히 보기/접기</summary>
@@ -37,20 +37,23 @@ ___
 
 </details>
 
+
 ***
 
-<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="right" height="900" margin-right="15">
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="right" height="900" >
 
-### 회원 관련 기능
+#### 회원 관련 기능
 - 일반 회원 가입, 로그인
 - 소셜 회원 가입, 로그인 (oauth 인증)
+
 - 모든 타입의 회원은 가입시 랜덤(실버, 골드, 플래티넘)으로 랭크 부여  
-    <s>당신의 배틀그라운드 랭크는 더이상 브론즈가 아닙니다</s>
+    - <s>당신의 배틀그라운드 랭크는 더이상 브론즈가 아닙니다</s>
 - 슈퍼 계정(관리자 등급)
     - 공지사항 작성 
-    - 모든 게시글, 모든 댓글 삭제 및 수정
- 
-### 게시판 관련 기능
+    - 모든 게시글, 모든 댓글 삭제 및 수정 권한
+   
+  
+#### 게시판 관련 기능
 - 게시글 작성,삭제,수정,조회
     - 게시글에 이미지 추가 가능
 - 댓글 작성,삭제,수정,조회
@@ -60,38 +63,20 @@ ___
 - 조회수(로그인,비로그인) 카운트
 
 
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ***
-## 구조
-![MVC Model2](https://user-images.githubusercontent.com/86813319/145570780-012231f0-61a4-424a-a0ea-679802eaa295.png)
 
-<center>
-    기능 정리 (+++ 간단하게 로직 추가!!!)
-    
-    member 
-           - login
-           - join
-           - socialLogin
-           - superLogin
-           
-    board
-           - write
-           - list
-           - view
-           - edit
-           - delete
-           - notice
-           - comment
-           - pagenation
-           - search
-           - upload
-           - viewCnt
-           - logger
-           ....
-           
-      
-</center>
+## 🏗️ Structure
+
+### JSP MVC Model 2
+![MVC Model2](https://user-images.githubusercontent.com/86813319/145702318-d663852e-d3d4-42e8-8465-c12e59868776.png)
+[CommonFilter, Controller, Model 코드](https://github.com/hamilkarr/TeamBoard/tree/master/main/java/com) <br>  
+[View(JSP) 코드](https://github.com/hamilkarr/TeamBoard/tree/master/main/webapp/views)
+
+### Data Base (mySQL 8.0)
+![drawSQL-export-2021-12-12_15_42](https://user-images.githubusercontent.com/86813319/145703150-cd4d4c1d-803e-4bec-87ba-2594eb1f379c.png)
+
 
 ## :wrench: Tech Stack
 
@@ -102,8 +87,6 @@ ___
 <br>
 
 ## 🤼‍♂️ Author
-
-(브랜치 이름으로 추가)
 
 Team Leader, Backend : **hamilkarr(JYP)**
 
@@ -118,11 +101,7 @@ Frontend : **bomi**
 <hr>
 
 
-## 📝 License
+## © License
 
 © 2017 Kakao Games Corp. & KRAFTON Inc. All Rights Reserved.  <br>
-
-
-
-
 
