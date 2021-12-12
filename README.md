@@ -69,10 +69,11 @@ ___
 
 ## 🏗️ Structure
 
-### JSP MVC Model 2
+   ### JSP MVC Model 2
 
-[CommonFilter, Controller, Model 코드](https://github.com/hamilkarr/TeamBoard/tree/master/main/java/com) <br>  
-[View(JSP) 코드](https://github.com/hamilkarr/TeamBoard/tree/master/main/webapp/views)  
+   [CommonFilter, Controller, Model](https://github.com/hamilkarr/TeamBoard/tree/master/main/java/com) <br>  
+   [View(JSP)](https://github.com/hamilkarr/TeamBoard/tree/master/main/webapp/views) <br>  
+   [Javascript, CSS](https://github.com/hamilkarr/TeamBoard/tree/master/main/webapp/resources)
   
 ![MVC Model2](https://user-images.githubusercontent.com/86813319/145702318-d663852e-d3d4-42e8-8465-c12e59868776.png)
 
@@ -87,13 +88,32 @@ ___
 
 ## :wrench: Tech Stack
 
-### Tech Stack
+### Development
 
-![기술](https://user-images.githubusercontent.com/84768566/144577425-3368fe1b-0701-4a6e-b083-d3ef793e2610.jpeg)
+<div align=center>     
+  <img src="https://img.shields.io/badge/java16-007396?style=flat&logo=java&logoColor=white"> 
+  <img src="https://img.shields.io/badge/jsp4.0-007396?style=flat&logo=jsp&logoColor=white"> 
+  <img src="https://img.shields.io/badge/html5-E34F26?style=flat&logo=html5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css-1572B6?style=flat&logo=css3&logoColor=white"> 
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat&logo=javascript&logoColor=black"> 
+  <img src="https://img.shields.io/badge/jquery-0769AD?style=flat&logo=jquery&logoColor=white">
+  <img src="https://img.shields.io/badge/Ajax-0769AD?style=flat&logo=Ajax&logoColor=white">
+  <img src="https://img.shields.io/badge/mysql8.0-4479A1?style=flat&logo=mysql&logoColor=white"> 
+  <img src="https://img.shields.io/badge/apache tomcat9.0-F8DC75?style=flat&logo=apachetomcat&logoColor=black">
+</div>
 
+### Hosting
+   [카페24 호스팅 센터](https://hosting.cafe24.com/) <br>  
+<div align=center>  
+  <img src="https://img.shields.io/badge/java1.8-007396?style=flat&logo=java&logoColor=white"> 
+  <img src="https://img.shields.io/badge/jsp3.1-007396?style=flat&logo=jsp&logoColor=white"> 
+  <img src="https://img.shields.io/badge/apache tomcat8.0-F8DC75?style=flat&logo=apachetomcat&logoColor=black">
+</div>
 <br>
 
 ## 🤼‍♂️ Author
+
+제작 기간 : 21-11-06 ~ 21-12-03
 
 Team Leader, Backend : **hamilkarr(JYP)**
 
