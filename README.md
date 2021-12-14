@@ -1,6 +1,6 @@
 <h1> 배틀그라운드 클론 게시판</h1>
 
-### 🏠  [website](http://hamilkarr2.cafe24.com/)
+### 🏠  [website](http://hamilkarr2.cafe24.com/board/list)
 
 <br>
 
