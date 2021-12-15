@@ -40,11 +40,12 @@ ___
 
 ***
 
-<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="right" height="900" >
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="right" height="1100" >
 
 #### 회원 관련 기능
 - 일반 회원 가입, 로그인
 - 소셜(네이버,카카오) 회원 가입, 로그인 (oauth 인증)
+    - 네이버 아이디로 로그인은 <검수 통과 실패>로 사용할 수 없습니다...
 
 - 모든 타입의 회원은 가입시 랜덤(실버, 골드, 플래티넘)으로 랭크 부여  
     - <s>당신의 배틀그라운드 랭크는 더이상 브론즈가 아닙니다</s>
@@ -66,7 +67,7 @@ ___
 - 조회수(로그인,비로그인) 카운트
 - 상단 배너(Swiper) 시간 경과시 자동으로 바뀜
 
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 
 ***
 
