@@ -143,7 +143,7 @@ window.addEventListener("load", function() {
 		el.addEventListener("click", function(e) {
 			e.preventDefault();
 			alert("로그인이 필요한 서비스입니다.");
-			location.href='../member/login';
+			location.href='../index.jsp';
 		});
 	});
 	
