@@ -29,25 +29,68 @@ window.onload = function() {
 ```
 <br>
 
-2. **게시글 구분별 정렬** 은  JSTL의 <c:choose> 조건문을 사용해 만들었습니다. <br>
+2. **게시글 구분별 정렬**은  JSTL의 <c:choose> 조건문을 사용해 만들었습니다. <br>
 👉 [list.jsp ](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/views/board/list.jsp)
 - <c:when test="${item.status == 'normal'}"> uri 값이 normal일때, 일반
 - <c:when test="${item.status == 'tip'}"> uri 값이 tip일때, 팁과 정보
 - <c:otherwise> 다른 값일때, 공지사항
 ```js
 <c:choose>
-	<c:when test="${item.status == 'normal'}">
-		<c:out value="일반"/>
-	</c:when>
-	<c:when test="${item.status == 'tip'}">
-		<c:out value="팁과 정보"/>
-	</c:when>
-	<c:otherwise>
-		<c:out value="공지사항"/>
-	</c:otherwise>
+	      <c:when test="${item.status == 'normal'}">
+		          <c:out value="일반"/>
+	      </c:when>
+	      <c:when test="${item.status == 'tip'}">
+		          <c:out value="팁과 정보"/>
+	      </c:when>
+	      <c:otherwise>
+	          	<c:out value="공지사항"/>
+	      </c:otherwise>
 </c:choose>
 ```
 <br>
+
+3. **공지사항**은  JSTL의 <c:choose> 조건문을 사용해 만들었습니다. <br>
+👉 [list.jsp ](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/views/board/list.jsp)
+
+- <c:when test="${item.isNotice == 1}">일때, notice 클래스 추가
+- notice 클래스일때 css 설정
+```js
+<c:choose>
+      		<c:when test="${item.isNotice == 1}">
+      			<tr class="tr_list notice">
+      		</c:when>
+      		<c:otherwise>
+        		<tr class="tr_list">
+        	</c:otherwise>
+</c:choose>
+```
+<br>
+
+4.  **게시글 구분 사이트 이동 시 on 클래스 추가**는 javascript를 사용해 만들었습니다.<br>
+👉 [list.js](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/resources/js/list.js)
+- 전체/일반/팁과 정보 이동 시 on 클래스를 추가해 해당 사이트 일때 css를 추가해 직관적으로 확일 할 수 있습니다.
+
+
+```js
+$(document).ready(function() {
+    var url = location.href;
+    // var getAr0 = url.indexOf("list");
+    var getAr1 = url.indexOf("normal");
+    var getAr2 = url.indexOf("tip");
+
+    // if(getAr0 != -1) {
+    //     $("#list").addClass("on");
+    // }
+    if(getAr1 != -1) {
+        $("#normal").addClass("on");
+        $("#total").removeClass("on");
+    }
+    if(getAr2 != -1) {
+        $("#tip").addClass("on");
+        $("#total").removeClass("on");
+    }
+});	
+```
 
 
 ## 🛠 Javascript, CSS
