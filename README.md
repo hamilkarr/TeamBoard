@@ -36,16 +36,16 @@ window.onload = function() {
 - <c:otherwise> 다른 값일때, 공지사항
 ```js
 <c:choose>
-	      		<c:when test="${item.status == 'normal'}">
-	      			<c:out value="일반"/>
-	      		</c:when>
-	      		<c:when test="${item.status == 'tip'}">
-	      			<c:out value="팁과 정보"/>
-	      		</c:when>
-	      		<c:otherwise>
-	        		<c:out value="공지사항"/>
-	        	</c:otherwise>
-        	</c:choose>
+	<c:when test="${item.status == 'normal'}">
+		<c:out value="일반"/>
+	</c:when>
+	<c:when test="${item.status == 'tip'}">
+		<c:out value="팁과 정보"/>
+	</c:when>
+	<c:otherwise>
+		<c:out value="공지사항"/>
+	</c:otherwise>
+</c:choose>
 ```
 <br>
 
