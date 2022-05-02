@@ -1,5 +1,60 @@
-# TeamBoard
-팀 포트폴리오 게시판 제작 저장소
+## 안녕하세요! Frontend , so 입니다
+
+### 🏠  [website](http://hamilkarr2.cafe24.com/board/list)
+<img src="https://user-images.githubusercontent.com/86813319/145541041-18c5f234-093b-46ed-9b9b-417c4606569e.png" align="center" height="1100" >
+
+## ❓ 담당한 부분
+- [[banner]](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/views/outline/header/inc/common.jsp) header부분에 움직이는 배너를 만들었습니다!
+
+
+- [[body]](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/views/board/list.jsp) 플레이어 게시판 메인화면을 담당했습니다!
+
+<br>
+
+## 🙋‍♀️ 기능
+1. **움직이는 배너**는 swiper.js의 슬라이드 스크립트를 활용해 3.5초가 지나면 자동으로 넘어가게 만들었습니다.<br> 👉 [banner.js](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/resources/js/banner.js)
+
+```js
+window.onload = function() {
+	var swiper = new Swiper(".mySwiper", {
+	    pagination: {
+	      el: ".swiper-pagination",
+	    },
+		autoplay: {
+          delay: 3500,
+          disableOnInteraction: false,
+        },
+	});
+};
+```
+<br>
+
+2. **게시글 구분별 정렬** 은  JSTL의 <c:choose> 조건문을 사용해 만들었습니다. <br>
+👉 [list.jsp ](https://github.com/hamilkarr/TeamBoard/blob/master/main/webapp/views/board/list.jsp)
+- <c:when test="${item.status == 'normal'}"> uri 값이 normal일때, 일반
+- <c:when test="${item.status == 'tip'}"> uri 값이 tip일때, 팁과 정보
+- <c:otherwise> 다른 값일때, 공지사항
+```js
+<c:choose>
+	      		<c:when test="${item.status == 'normal'}">
+	      			<c:out value="일반"/>
+	      		</c:when>
+	      		<c:when test="${item.status == 'tip'}">
+	      			<c:out value="팁과 정보"/>
+	      		</c:when>
+	      		<c:otherwise>
+	        		<c:out value="공지사항"/>
+	        	</c:otherwise>
+        	</c:choose>
+```
+<br>
+
+
+## 🛠 Javascript, CSS
+
+[team frontend](https://github.com/hamilkarr/TeamBoard/tree/master/main/webapp/resources)
+
+<details><summary>so 작업기록 눌러 확인해보기</summary>
 
 ## Update2 (12-02) 프론트팀 취합 이후 수정함
 ### 전체 디벨롭 이후에 수정할 부분!!
@@ -56,3 +111,16 @@ board.css
 banner.js
 - 롤링 배너 자동 슬라이드 추가
 
+</details>
+
+<br>   
+
+   
+## 📝 어려웠던 점
+
+ 백엔드팀과 함께 하는 작업이라 데이터를 받아오는 과정이 쉽지않았다. 개인이 작업한 코드가 아니다보니 어느위치에 있는지 확인하는 시간도 걸렸고 프론트팀에서도 각자가 작업한 부분을 통합하는 과정에서 오류가 나타나기도 했다. 하지만 이런 일이 있을 수록 서로 소통을 더욱 활발히 했고 회의를 거의 매일 했었다. 자신이 담당한 부분을 설명하며 발표하는 시간을 가졌고 개인 read.me를 활용해 작업기록을 공유했다. 이 점이 이후 개발시 시간을 단축시키는데 큰 도움이 되었던 것 같다. 다시한번 팀프로젝트에서 커뮤니케이션이 얼마나 중요한가를 느끼는 계기가 되었다.
+
+
+## 🤼‍♂️ 
+
+> [teamgithub](https://github.com/hamilkarr/TeamBoard)
